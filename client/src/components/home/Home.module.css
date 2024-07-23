@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+input,
+button {
+    font: inherit;
+}
+
+body {
+    font: 18px/1.5 "Kode Mono", sans-serif;
+    background: #eee;
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+}
