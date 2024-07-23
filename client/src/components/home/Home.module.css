@@ -11,7 +11,7 @@ button {
     font: inherit;
 }
 
-body {
+.body {
     font: 18px/1.5 "Kode Mono", sans-serif;
     background: #eee;
     display: flex;
@@ -19,3 +19,4 @@ body {
     align-items: center;
     justify-content: center;
 }
+

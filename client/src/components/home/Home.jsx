@@ -1,9 +1,13 @@
 
-export default function Home(){
+export default function Home() {
 
     return (
         <>
-        <h1>Home</h1>
+            <div className="body">
+                <article>
+                    <h1>HOME</h1>
+                </article>
+            </div>
         </>
     )
 }
