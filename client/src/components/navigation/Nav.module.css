@@ -1,0 +1,14 @@
+.nav{
+    display: flex;
+    flex: 0 0 auto;
+    gap: 1em;
+    align-items: center;
+    justify-content: end;
+    flex-direction: row;
+    
+}
+.nav a {
+    text-decoration: none;
+    flex: 0 1 auto;
+    /* background-color: red; */
+}

@@ -2,15 +2,15 @@ import './App.css'
 import { Routes, Route } from 'react-router-dom'
 
 import Home from './components/home/Home.jsx'
-import Navigation from './components/navigation/Navigation.jsx'
+import Nav from './components/navigation/Nav.jsx'
 
 function App() {
 
 
   return (
-    <div>
+    <div className='main-container'>
 
-      <Navigation />
+      <Nav />
 
       <Routes>
         <Route path="/" element={<Home />} />
