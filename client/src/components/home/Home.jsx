@@ -12,23 +12,19 @@ export default function Home() {
                 <div className={styles.whArticle}>
                     <article className={styles.whCard}>
                         <img src="./images/krushunskiVodopadi.jpg" />
-                        <h4>Info Small</h4>
+                        <h4>Info Small Info Small Info Small Info Small Info Small 1</h4>
                         <Link to="/">Details</Link>
                     </article>
                     <article className={styles.whCard}>
                         <img src="./images/krushunskiVodopadi.jpg" />
-                        <h4>Info Small</h4>
+                        <h4>Info Small Info Small Info Small Info Small Info Small 2</h4>
                         <Link to="/">Details</Link>
                     </article> <article className={styles.whCard}>
                         <img src="./images/krushunskiVodopadi.jpg" />
-                        <h4>Info Small</h4>
+                        <h4>Info Small Info Small Info Small Info Small Info Small 3</h4>
                         <Link to="/">Details</Link>
                     </article>
-                    <article className={styles.whCard}>
-                        <img src="./images/krushunskiVodopadi.jpg" />
-                        <h4>Info Small</h4>
-                        <Link to="/">Details</Link>
-                    </article>
+                   
                 </div>
             </div>
         </>
