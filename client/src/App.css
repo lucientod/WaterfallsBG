@@ -25,10 +25,8 @@ h4,
 h5 {
     font-family: 'Montserrat', sans-serif;
 }
-
-section,
-button {
-    font: inherit;
+body, input, select, button, section {
+  font: inherit;
 }
 
 body {
@@ -43,4 +41,9 @@ body {
   border-radius: 0.5em;
   background-color: white;
   box-shadow: 0 0 1em 0 rgb(0, 0, 0, 0.4);
+}
+
+a:hover{
+  background-color: orange;
+  color: white;
 }

@@ -22,6 +22,8 @@
 .nav a:hover{
     text-decoration: overline;
     color: darkblue;
+    cursor: pointer;
+
 }
 
 .nav .routes{
