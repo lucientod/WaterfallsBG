@@ -1,4 +1,6 @@
 .nav{
+    margin: 1em auto;
+    background-color: lightgray;
     display: flex;
     flex: 0 0 auto;
     gap: 1em;
