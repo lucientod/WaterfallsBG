@@ -34,3 +34,13 @@ button {
 body {
     margin: 0 auto;
 }
+
+ a {
+  padding: 0.2em;
+  text-decoration: none;
+  color: black;
+  border: 1px solid black;
+  border-radius: 0.5em;
+  background-color: white;
+  box-shadow: 0 0 1em 0 rgb(0, 0, 0, 0.4);
+}

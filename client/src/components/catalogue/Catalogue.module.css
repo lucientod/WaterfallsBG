@@ -1,0 +1,27 @@
+.wrapper {
+    padding: 1em;
+    margin: 0 auto;
+    background-color: rgb(236, 237, 238);
+    border-radius: 0.5em;
+}
+
+.wrapper .wcCard {
+    margin-bottom: 2em;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    gap: 1em;
+/* flex-wrap: wrap; */
+}
+
+.wcCard img {
+    margin-top: 0.3em;
+    width: 300px;
+    height: auto;
+    border-radius: 0.5em;
+    box-shadow: 0 0 1em 0 rgb(0, 0, 0, 1.2);
+}
+
+.wcCard p{
+    margin: 1em;
+}

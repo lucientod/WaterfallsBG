@@ -19,7 +19,8 @@ export default function Home() {
                         <img src="./images/krushunskiVodopadi.jpg" />
                         <h4>Info Small Info Small Info Small Info Small Info Small 2</h4>
                         <Link to="/">Details</Link>
-                    </article> <article className={styles.whCard}>
+                    </article> 
+                    <article className={styles.whCard}>
                         <img src="./images/krushunskiVodopadi.jpg" />
                         <h4>Info Small Info Small Info Small Info Small Info Small 3</h4>
                         <Link to="/">Details</Link>

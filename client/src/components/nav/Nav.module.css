@@ -12,10 +12,16 @@
     
 }
 .nav a {
-    text-decoration: none;
     flex: 0 1 auto;
-    /* background-color: red; */
-    color: black;
+    border: 0px;
+    text-decoration:underline ;
+    background-color: inherit;
+    box-shadow: none;
+
+}
+.nav a:hover{
+    text-decoration: overline;
+    color: darkblue;
 }
 
 .nav .routes{

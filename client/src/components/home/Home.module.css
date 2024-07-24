@@ -1,13 +1,16 @@
 .body {
     margin: 0 auto;
     background-image: url('./images/krushunskiVodopadi.jpg');
+    background-color: lightgrey;
     background-size: 100%;
     /* background-attachment: scroll; */
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    border-radius: 0.3em;
 
     height: 100vh;
+    width: auto;
     display: flex;
     justify-content: start;
     align-items: center;
@@ -69,6 +72,5 @@
     color: black;
     border: 1px solid black;
     border-radius: 0.5em;
-    box-shadow: 0 0 1em 0 rgb(0, 0, 0, 1.2);
-
+    box-shadow: 0 0 1em 0 rgb(0, 0, 0, 0.5);
 }

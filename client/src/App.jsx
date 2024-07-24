@@ -6,6 +6,7 @@ import Nav from './components/nav/Nav.jsx'
 import Catalogue from './components/catalogue/Catalogue.jsx'
 import Login from './components/login/Login.jsx'
 import Register from './components/register/Register.jsx'
+import Footer from './components/footer/Footer.jsx'
 
 function App() {
 
@@ -21,6 +22,8 @@ function App() {
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register/>} />
       </Routes>
+
+      <Footer/>
     </div>
   )
 }
