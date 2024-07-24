@@ -1,4 +1,5 @@
 .body {
+    margin: 0 auto;
     background-image: url('./images/krushunskiVodopadi.jpg');
     background-size: 100%;
     /* background-attachment: scroll; */
@@ -11,19 +12,20 @@
     justify-content: start;
     align-items: center;
     flex-direction: column;
-    box-shadow: 0 0 1em 0 rgb(0, 0, 0, 1.2);
-
+    box-shadow: 0 0 1em 0 rgb(0, 0, 0, 0.5);
 }
 
 .body h1,
 .body p {
+   
     /* border: 1px solid black; */
     background-color: white;
-    margin: 0.2em auto;
+    margin: 1em 2em;
     padding: 0.5em;
     border-radius: 0.5em;
-    box-shadow: 0 0 1em 0 rgb(0, 0, 0, 1.2);
-    
+    box-shadow: 0 0 1em 0 rgb(0, 0, 0, 0.5);
+    white-space: normal;
+    text-align: justify;
 
 }
 
@@ -35,9 +37,6 @@
     margin: 1em;
     box-shadow: 0 0 1em 0 rgb(0, 0, 0, 0.2);
     flex-wrap: wrap;
-    box-shadow: 0 0 1em 0 rgb(0, 0, 0, 1.2);
-
-
 }
 
 .whCard {
@@ -52,6 +51,7 @@
 }
 
 .whCard img {
+    margin-top: 0.3em;
     width: 400px;
     height: auto;
     border-radius: 0.5em;
