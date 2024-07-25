@@ -9,30 +9,29 @@ export default function Catalogue() {
         isFetching,
         refetch,
     } = useFetch('http://localhost:3030/jsonstore/waterfalls', []);
+
     console.log((Object.values(waterfalls)[1]));
     const testVodopad = (Object.values(waterfalls)[1]);
     console.log(testVodopad);
 
-    if (!testVodopad)
-        refetch()
 
     return (
         <div className={styles.wrapper}>
 
-            {!isFetching ? console.log("IS FETCHING"):
-           ( <article className={styles.wcCard}>
-                <div>
+            {isFetching ? console.log("IS FETCHING") :
+                (<article className={styles.wcCard}>
+                    <div>
 
-                    <img src={testVodopad.imageUrl} />
+                        <img src={testVodopad.imageUrl} />
 
-                </div>
-                <div>
-                    <h3>{testVodopad.info}</h3>
-                    {/* <p>Location</p> */}
-                    <p>{testVodopad.description}</p>
-                    <Link to="/">Details</Link>
-                </div>
-            </article>)}
+                    </div>
+                    <div>
+                        <h3>{testVodopad.info}</h3>
+                        {/* <p>Location</p> */}
+                        <p>{testVodopad.description}</p>
+                        <Link to="/">Details</Link>
+                    </div>
+                </article>)}
 
             <article className={styles.wcCard}>
                 <div>
