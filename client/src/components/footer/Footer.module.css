@@ -1,7 +1,12 @@
-footer{
-    background-color:lightgrey;
+footer {
+    background-color: rgb(97, 105, 2);
     margin: 1em auto;
     padding: 0.1em 1em;
     text-align: end;
     border-radius: 0.5em;
+    color: aliceblue;
+}
+
+footer:hover {
+    cursor: default;
 }

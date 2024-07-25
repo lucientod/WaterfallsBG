@@ -1,7 +1,7 @@
 .nav{
-    margin: 1em auto;
-    padding: 0.1em 1em;
-    background-color: lightgray;
+    margin: 0.6em auto;
+    padding: 0.1em 1em 0.5em 1em;
+    background-color: rgb(97, 105, 2);
     display: flex;
     flex: 0 0 auto;
     gap: 1em;
@@ -9,7 +9,6 @@
     justify-content:space-between;
     flex-direction: row;
     border-radius: 0.5em;
-    
 }
 .nav a {
     flex: 0 1 auto;
@@ -17,7 +16,7 @@
     text-decoration:underline ;
     background-color: inherit;
     box-shadow: none;
-
+    color: aliceblue;
 }
 .nav a:hover{
     text-decoration: overline;
