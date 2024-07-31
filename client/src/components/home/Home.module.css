@@ -1,13 +1,13 @@
 .body {
+    position: relative;
     box-sizing: border-box;
     margin: 0 auto;
-    background-image: url('./images/krushunskiVodopadi.jpg');
     background-color: lightgrey;
     background-size: 100%;
-    /* background-attachment: scroll; */
+    background-attachment: scroll;
     background-position: stretch;
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    background:url('./images/krushunskiVodopadi.jpg'), fixed;
     border-radius: 0.3em;
 
     min-height: 100vh;

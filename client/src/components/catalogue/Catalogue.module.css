@@ -1,23 +1,35 @@
 .wrapper {
+    display: flex;
     padding: 1em;
     margin: 0 auto;
     background-color: rgb(236, 237, 238);
     border-radius: 0.5em;
+    flex-direction: column;
+    /* align-items:center;
+    justify-content:center;
+    position: relative; */
 }
 
 .wrapper .wcCard {
-    margin-bottom: 2em;
     display: flex;
-    align-items: center;
-    justify-content:center;
+    margin-bottom: 2em;
+    align-items:;
+    justify-content:space-between;
     gap: 1em;
 /* flex-wrap: wrap; */
 }
 
+.wcCard .info{
+    flex-basis: 100%;
+    border: 1px  grey;
+    border-radius: 0.5em;
+    box-shadow: 0 0 1em 0 rgb(0, 0, 0, 0.3);
+}
+
 .wcCard img {
     margin-top: 0.3em;
-    width: 300px;
-    height: auto;
+    width: 400px;
+    height: 300px;
     border-radius: 0.5em;
     box-shadow: 0 0 1em 0 rgb(0, 0, 0, 1.2);
 }
