@@ -13,7 +13,7 @@
 .wrapper .wcCard {
     display: flex;
     margin-bottom: 2em;
-    align-items:;
+    /* align-items: center; */
     justify-content:space-between;
     gap: 1em;
 /* flex-wrap: wrap; */

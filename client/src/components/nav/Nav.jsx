@@ -8,6 +8,7 @@ export default function Navigation() {
                 <Link to="/">Home</Link>
             </div>
             <div className={styles.routes}>
+                <Link to="/createWaterfall">Create Waterfall</Link>
                 <Link to="/catalogue">Catalogue</Link>
                 <Link to="/login">Login</Link>
                 <Link to="/register">Register</Link>
