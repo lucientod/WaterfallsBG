@@ -35,6 +35,7 @@
 }
 
 .whArticle {
+    display: flex;
     /* background-color: white; */
     border-radius: 0.5em;
     display: flex;
@@ -45,12 +46,13 @@
 }
 
 .whCard {
-    flex:0 1 auto;
+    flex:0 1 50%;
     background-color: white;
     border-radius: 0.5em;
     padding: 0.5em;
     text-align: center;   
      box-shadow: 0 0 1em 0 rgb(0, 0, 0, 1.2);
+     max-width: 450px;
 
 }
 

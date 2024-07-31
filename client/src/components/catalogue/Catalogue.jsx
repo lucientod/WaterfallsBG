@@ -11,10 +11,6 @@ export default function Catalogue() {
         refetch,
     } = useFetch('http://localhost:3030/jsonstore/waterfalls', []);
 
-    console.log((Object.values(waterfalls)));
-    const testVodopad = (Object.values(waterfalls)[1]);
-    console.log(testVodopad);
-
     return (
 
         <div className={styles.wrapper}>
