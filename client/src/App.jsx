@@ -7,8 +7,7 @@ import Catalogue from './components/catalogue/Catalogue.jsx'
 import Login from './components/login/Login.jsx'
 import Register from './components/register/Register.jsx'
 import Footer from './components/footer/Footer.jsx'
-import Create from './components/create/Create.jsx'
-
+import CreateWaterfall from './components/createWaterfall/CreateWaterfall.jsx'
 function App() {
 
 
@@ -22,7 +21,7 @@ function App() {
         <Route path="catalogue" element={<Catalogue />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register/>} />
-        <Route path="createWaterfall" element={<Create/>} />
+        <Route path="createWaterfall" element={<CreateWaterfall/>} />
       </Routes>
 
       <Footer/>

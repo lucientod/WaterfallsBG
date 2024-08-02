@@ -10,6 +10,8 @@ export default function Home() {
         refetch,
     } = useFetch('http://localhost:3030/jsonstore/waterfalls', []);
 
+// console.log(Object.values(waterfalls).slice(-2));
+
     return (
         <>
             <div className="wrapper">
@@ -17,23 +19,13 @@ export default function Home() {
                     <h1>Водопадите в България</h1>
 
                     <div className={styles.whArticle}>
-                        {Object.values(waterfalls).map((waterfall)=>
+                        {Object.values(waterfalls).slice(-3).map((waterfall)=>
                         <article className={styles.whCard} key={waterfall._id}>
+                            <h3>{waterfall.name}</h3>
                             <img src={waterfall.imageUrl} />
                             <h4>{waterfall.description}</h4>
                             <Link to="/">Details</Link>
                         </article>)}
-                        <article className={styles.whCard}>
-                            <img src="./images/krushunskiVodopadi.jpg" />
-                            <h4>Info Small Info Small Info Small Info Small Info Small 2</h4>
-                            <Link to="/">Details</Link>
-                        </article>
-                        <article className={styles.whCard}>
-                            <img src="./images/krushunskiVodopadi.jpg" />
-                            <h4>Info Small Info Small Info Small Info Small Info Small 3</h4>
-                            <Link to="/">Details</Link>
-                        </article>
-
                     </div>
                 </div>
             </div>

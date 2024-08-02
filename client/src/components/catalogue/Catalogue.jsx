@@ -15,7 +15,7 @@ export default function Catalogue() {
 
         <div className={styles.wrapper}>
 
-            {isFetching ? console.log("IS FETCHING")
+            {isFetching ? <div>LOADING...</div>
                 :
                 <>
                    {Object.values(waterfalls).map((waterfall)=>
@@ -31,7 +31,7 @@ export default function Catalogue() {
                             <p>Височина: {waterfall.height}</p>
                             <p>Достъп: {waterfall.access}</p>
                             <p>Най-подходящо време: {waterfall.prefTime}</p>
-                            <p>{waterfall.description}</p>
+                            <p>Описание: {waterfall.description}</p>
                             
                             <Link to="/">Details</Link>
                         </div>
