@@ -31,7 +31,11 @@
     font-weight: bold;
 }
 
-
+.articleWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .comments {
     margin: 20px;
@@ -80,6 +84,7 @@
 }
 
 .comments article {
+    /* margin: 0 auto; */
     list-style-type: none;
     padding: 0;
 }

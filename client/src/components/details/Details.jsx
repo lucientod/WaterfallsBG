@@ -1,7 +1,7 @@
 import styles from "./Details.module.css"
 import { useNavigate, useParams } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch.js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as comAPI from "../../api/comments.js"
 
 export default function Details() {
@@ -9,15 +9,19 @@ export default function Details() {
     const { data: waterfall, isFetching } = useFetch(`http://localhost:3030/jsonstore/waterfalls/${WaterfallId}`, {})
 
     const [newComment, setNewComment] = useState("")
-    const [com, setCom] = useState([])
+    const [comments, setComments] = useState([])
+
+    useEffect(() => {
+        if (waterfall && waterfall.comments) {
+            setComments(Object.values(waterfall.comments))
+        }
+    }, [])
 
     const CommentSubmitHandler = async (e) => {
         e.preventDefault()
         const updatedComments = await comAPI.create(WaterfallId, 'username', newComment)
+        setComments((prevComment) => [...prevComment, updatedComments])
         setNewComment('')
-        console.log(updatedComments);
-        setCom(updatedComments)
-        
     }
     // console.log((Object.valueswaterfall.comments));
     return (
@@ -50,22 +54,24 @@ export default function Details() {
                 </ul>
                 <img src={waterfall.imageUrl} />
             </article >
-            <article className={styles.comments}>
-                <div className={styles.createComment}>
-                    <form onSubmit={CommentSubmitHandler}>
-                        <label htmlFor="text">Comment</label>
-                        <input type="text" id="text" name="text" onChange={(e) => setNewComment(e.target.value)} value={newComment} />
-                        <input type="submit" />
-                    </form>
-                </div>
-                <article>
-                    {waterfall.comments && Object.values(waterfall.comments).map(comment => (
-                        <li key={comment._id} className={styles.comment}>
-                            <p>{comment.username}: {comment.text}</p>
-                        </li>
-                    ))}
+            <div className={styles.articleWrapper}>
+                <article className={styles.comments}>
+                    <div className={styles.createComment}>
+                        <form onSubmit={CommentSubmitHandler}>
+                            <label htmlFor="text">Comment</label>
+                            <input type="text" id="text" name="text" onChange={(e) => setNewComment(e.target.value)} value={newComment} />
+                            <input type="submit" />
+                        </form>
+                    </div>
+                    <article>
+                        {waterfall.comments && comments.map(comment => (
+                            <li key={comment._id} className={styles.comment}>
+                                <p>{comment.username}: {comment.text}</p>
+                            </li>
+                        ))}
+                    </article>
                 </article>
-            </article>
+            </div>
         </>
     )
 }
