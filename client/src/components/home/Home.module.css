@@ -2,12 +2,12 @@
     position: relative;
     box-sizing: border-box;
     margin: 0 auto;
-    background-color: lightgrey;
+    /* background-color: lightgrey; */
     background-size: 100%;
     background-attachment: scroll;
     background-position: stretch;
     background-repeat: no-repeat;
-    background: url('./images/krushunskiVodopadi.jpg'), fixed;
+    background: url('https://weekendtourism.eu/uploads/place/416/Raisko-pruskalo.jpg'), fixed;
     border-radius: 0.3em;
 
     min-height: 100vh;

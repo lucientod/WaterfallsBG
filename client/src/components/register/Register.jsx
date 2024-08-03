@@ -16,6 +16,11 @@ export default function Login() {
                         <label for="password">Password</label>
                 </p>
 
+                <p className={styles.field} >
+                    <input type="password" name="rePassword" id="rePassword" required/>
+                        <label for="rePassword">Confirm Password</label>
+                </p>
+
                 <input type="submit" value="Register"/>
 
             </fieldset>

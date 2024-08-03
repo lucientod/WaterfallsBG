@@ -122,7 +122,7 @@ export default function CreateWaterfall() {
                         type="text"
                         name="prefTime"
                         id="prefTime"
-                        placeholder="Лято"
+                        placeholder="Пролет"
                         value={formValues.prefTime}
                         onChange={changeHandler}
                     />

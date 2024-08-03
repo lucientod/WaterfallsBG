@@ -20,10 +20,15 @@
 }
 
 .wcCard .info{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
     flex-basis: 100%;
     border: 1px  grey;
     border-radius: 0.5em;
     box-shadow: 0 0 1em 0 rgb(0, 0, 0, 0.3);
+    justify-content: space-around;
+    align-items: center;
 }
 
 .wcCard img {

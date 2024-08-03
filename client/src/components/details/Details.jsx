@@ -4,7 +4,6 @@ import { useFetch } from "../../hooks/useFetch.js";
 
 export default function Details() {
     const { WaterfallId } = useParams()
-    console.log(WaterfallId);
     const { data: waterfall, isFetching } = useFetch(`http://localhost:3030/jsonstore/waterfalls/${WaterfallId}`, {})
     return (
         <article className={styles.mainArticle}>
