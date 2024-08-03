@@ -1,17 +1,27 @@
 .form {
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
     gap: 0.5em;
     justify-content: center;
     align-items: center;
 }
 
-.input {
+.inputs {
     padding: 1em;
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    align-items: center;
 }
 
 .form input[type="submit"] {
     padding: 0.5em;
+    border: 1px solid gray;
+    border-radius: 0.5em;
+
+}
+.form .inputs label{
+min-width: 200px;
 }
 
 .form input[type="submit"]:hover {

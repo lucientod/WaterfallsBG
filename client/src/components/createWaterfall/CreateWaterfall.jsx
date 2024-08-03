@@ -1,28 +1,28 @@
 import { useRef, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import styles from "./CreateWaterfall.module.css"
 
-export default function () {
-    const [formValues, setFormValues] = useState({
-        name: "",
-        location: "",
-        closestCity: "",
-        height: "",
-        access: "",
-        prefTime: "",
-        description: "",
-        imageUrl: "",
-        _id: "",
-    })
+const initialFormValues = {
+    name: "",
+    location: "",
+    closestCity: "",
+    height: "",
+    access: "",
+    prefTime: "",
+    description: "",
+    imageUrl: "",
+    _id: "",
+}
+
+export default function CreateWaterfall() {
+    const navigate = useNavigate();
+    const [formValues, setFormValues] = useState(initialFormValues)
 
     const inputRef = useRef()
     useEffect(() => {
         inputRef.current.focus()
     }, [])
-
-    const formSubmitHandler = (e) => {
-        e.preventDefault()
-        console.log(formValues);
-    }
 
     const changeHandler = (e) => {
         // console.log(`${e.target.value}`);
@@ -33,10 +33,28 @@ export default function () {
         console.log(`${Object.values(formValues)}`);
     }
 
+    const formSubmitHandler = (e) => {
+        console.log(e);
+        e.preventDefault();
+
+        ( async function submit() {
+            const response = await fetch('http://localhost:3030/jsonstore/waterfalls',
+                {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ ...formValues })
+                })
+                const result = await response.json()
+                console.log(result);
+        })();
+        console.log(`formValues: ${formValues}`);
+        navigate('/catalogue')
+    }
+
     return (
         <>
             <form onSubmit={formSubmitHandler} className={styles.form}>
-                <div className={styles.input}>
+                <div className={styles.inputs}>
                     <label htmlFor="name">Име</label>
                     <input
                         type="text"
@@ -49,7 +67,7 @@ export default function () {
                     />
                 </div>
 
-                <div className={styles.input}>
+                <div className={styles.inputs}>
                     <label htmlFor="location">Географско местоположение</label>
                     <input
                         ref={inputRef}
@@ -61,7 +79,7 @@ export default function () {
                         onChange={changeHandler}
                     />
                 </div>
-                <div className={styles.input}>
+                <div className={styles.inputs}>
                     <label htmlFor="closestCity">Най-близко населено място</label>
                     <input
                         ref={inputRef}
@@ -73,7 +91,7 @@ export default function () {
                         onChange={changeHandler}
                     />
                 </div>
-                <div className={styles.input}>
+                <div className={styles.inputs}>
                     <label htmlFor="height">Височина</label>
                     <input
                         ref={inputRef}
@@ -85,7 +103,7 @@ export default function () {
                         onChange={changeHandler}
                     />
                 </div>
-                <div className={styles.input}>
+                <div className={styles.inputs}>
                     <label htmlFor="access">Достъп</label>
                     <input
                         ref={inputRef}
@@ -97,7 +115,7 @@ export default function () {
                         onChange={changeHandler}
                     />
                 </div>
-                <div className={styles.input}>
+                <div className={styles.inputs}>
                     <label htmlFor="prefTime">Най-подходящо време</label>
                     <input
                         ref={inputRef}
@@ -109,7 +127,7 @@ export default function () {
                         onChange={changeHandler}
                     />
                 </div>
-                <div className={styles.input}>
+                <div className={styles.inputs}>
                     <label htmlFor="description">Описание</label>
                     <input
                         ref={inputRef}
@@ -121,7 +139,7 @@ export default function () {
                         onChange={changeHandler}
                     />
                 </div>
-                <div className={styles.input}>
+                <div className={styles.inputs}>
                     <label htmlFor="imageUrl">Адрес на снимка</label>
                     <input
                         ref={inputRef}
@@ -133,7 +151,7 @@ export default function () {
                         onChange={changeHandler}
                     />
                 </div>
-                <input type="submit" value="Качи водопад"/>
+                <input type="submit" value="Качи водопад" />
             </form>
         </>)
 }

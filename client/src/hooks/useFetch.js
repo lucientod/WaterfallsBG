@@ -15,7 +15,7 @@ export function useFetch(url, initalData) {
 
             setData(result);
             setIsFetching(false);
-        })();
+        })(),[];
 
         return () => abortController.abort();
     }, [url, toggleRefetch]);

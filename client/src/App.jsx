@@ -8,6 +8,7 @@ import Login from './components/login/Login.jsx'
 import Register from './components/register/Register.jsx'
 import Footer from './components/footer/Footer.jsx'
 import CreateWaterfall from './components/createWaterfall/CreateWaterfall.jsx'
+import Details from './components/details/Details.jsx'
 function App() {
 
 
@@ -22,6 +23,8 @@ function App() {
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register/>} />
         <Route path="createWaterfall" element={<CreateWaterfall/>} />
+        <Route path="{:id}/details" element={<Details/>} />
+
       </Routes>
 
       <Footer/>
