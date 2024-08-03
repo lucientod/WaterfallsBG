@@ -1,0 +1,31 @@
+.mainArticle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(236, 237, 238);
+    border-radius: 0.5em;
+    padding: 1em;
+    overflow: hidden;
+}
+
+.mainArticle img {
+    position: 0.5em;
+    max-width: 100%;
+    border-radius: 0.5em;
+}
+.mainArticle h1{
+    padding: 0.3em;
+    font-size: 30px;
+    text-decoration: underline;
+}
+.mainArticle > p{
+    margin: 1em;
+}
+.mainArticle p {
+    font-size: 16px;
+    padding: 0.3em;
+}
+.title{
+    font-weight: bold;
+}

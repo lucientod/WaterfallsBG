@@ -24,7 +24,7 @@ export default function Home() {
                             <h3>{waterfall.name}</h3>
                             <img src={waterfall.imageUrl} />
                             <h4>{waterfall.description}</h4>
-                            <Link to="/">Details</Link>
+                            <Link to= {`/catalogue/${waterfall._id}/details`}>Details</Link>
                         </article>)}
                     </div>
                 </div>

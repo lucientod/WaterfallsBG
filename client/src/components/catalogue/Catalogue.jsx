@@ -27,13 +27,8 @@ export default function Catalogue() {
                         <div className={styles.info}>
                             <h3>{waterfall.name}</h3>
                             <p>Географско местоположение: {waterfall.location}</p>
-                            <p>Най-близко населено място: {waterfall.city}</p>
-                            <p>Височина: {waterfall.height}</p>
-                            <p>Достъп: {waterfall.access}</p>
-                            <p>Най-подходящо време: {waterfall.prefTime}</p>
-                            <p>Описание: {waterfall.description}</p>
-                            
-                            <Link to="/">Details</Link>
+                            <p>Височина: {waterfall.height}</p>                            
+                            <Link to= {`/catalogue/${waterfall._id}/details`}>Details</Link>
                         </div>
                     </article>)}
                 </>

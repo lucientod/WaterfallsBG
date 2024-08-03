@@ -20,10 +20,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="catalogue" element={<Catalogue />} />
+        <Route path="catalogue/:WaterfallId/details" element={<Details/>} />
+        <Route path="createWaterfall" element={<CreateWaterfall/>} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register/>} />
-        <Route path="createWaterfall" element={<CreateWaterfall/>} />
-        <Route path="{:id}/details" element={<Details/>} />
 
       </Routes>
 
