@@ -1,21 +1,25 @@
 import styles from "./Details.module.css"
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch.js";
 import { useState } from "react";
-import { post } from "../../api/requester.js";
+import * as comAPI from "../../api/comments.js"
 
 export default function Details() {
     const { WaterfallId } = useParams()
     const { data: waterfall, isFetching } = useFetch(`http://localhost:3030/jsonstore/waterfalls/${WaterfallId}`, {})
 
     const [newComment, setNewComment] = useState("")
+    const [com, setCom] = useState([])
 
-    const CommentSubmitHandler = (e) => {
+    const CommentSubmitHandler = async (e) => {
         e.preventDefault()
-        console.log(newComment);
+        const updatedComments = await comAPI.create(WaterfallId, 'username', newComment)
+        setNewComment('')
+        console.log(updatedComments);
+        setCom(updatedComments)
         
     }
-
+    // console.log((Object.valueswaterfall.comments));
     return (
         <>
             <article className={styles.mainArticle}>
@@ -54,7 +58,13 @@ export default function Details() {
                         <input type="submit" />
                     </form>
                 </div>
-                <article>Added Comments</article>
+                <article>
+                    {waterfall.comments && Object.values(waterfall.comments).map(comment => (
+                        <li key={comment._id} className={styles.comment}>
+                            <p>{comment.username}: {comment.text}</p>
+                        </li>
+                    ))}
+                </article>
             </article>
         </>
     )

@@ -9,13 +9,13 @@
 
 
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 html {
-    font: 14px/1.5 Lato, sans-serif;
+  font: 14px/1.5 Lato, sans-serif;
 }
 
 h1,
@@ -23,17 +23,22 @@ h2,
 h3,
 h4,
 h5 {
-    font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
-body, input, select, button, section {
+
+body,
+input,
+select,
+button,
+section {
   font: inherit;
 }
 
 body {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
- a {
+a {
   padding: 0.2em;
   text-decoration: none;
   color: black;
@@ -43,7 +48,11 @@ body {
   box-shadow: 0 0 1em 0 rgb(0, 0, 0, 0.4);
 }
 
-a:hover{
+li {
+  list-style: none;
+}
+
+a:hover {
   background-color: orange;
   color: white;
 }
