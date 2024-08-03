@@ -30,3 +30,65 @@
 .title{
     font-weight: bold;
 }
+
+
+
+.comments {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    width: 100%;
+    max-width: 600px;
+}
+
+.createComment {
+    margin-bottom: 20px;
+}
+
+.createComment form {
+    display: flex;
+    flex-direction: column;
+}
+
+.createComment label {
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.createComment input[type="text"] {
+    margin-bottom: 12px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.createComment input[type="submit"] {
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.createComment input[type="submit"]:hover {
+    background-color: orange;
+}
+
+.comments article {
+    list-style-type: none;
+    padding: 0;
+}
+
+.comment {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.comment p {
+    margin: 0;
+}
