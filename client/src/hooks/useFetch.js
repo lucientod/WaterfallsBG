@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { getAll } from "../api/waterfall-api.js";
 
 export function useFetch(url, initalData) {
     const [data, setData] = useState(initalData);
@@ -10,14 +11,15 @@ export function useFetch(url, initalData) {
         const abortController = new AbortController();
 
         (async () => {
-            const response = await fetch(url, { signal: abortController.signal });
-            const result = await response.json();
+        //    const result = await getAll()
+           const response = await fetch(url, { signal: abortController.signal });
+           const result = await response.json();
 
             setData(result);
             setIsFetching(false);
         })(),[];
 
-        return () => abortController.abort();
+        return () => abortController.abort('change page');
     }, [url, toggleRefetch]);
 
     const refetch = () => {

@@ -18,7 +18,9 @@ export default function Catalogue() {
             {isFetching ? <div>LOADING...</div>
                 :
                 <>
-                   {Object.values(waterfalls).map((waterfall)=>
+                   {!Object.values(waterfalls)
+                   ? <h1>No waterfalls yet</h1>
+                   :Object.values(waterfalls).map((waterfall)=>
                     <article className={styles.wcCard} key={waterfall._id}>
 
                         <div>

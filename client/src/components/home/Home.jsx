@@ -9,30 +9,37 @@ export default function Home() {
         isFetching,
         refetch,
     } = useFetch('http://localhost:3030/jsonstore/waterfalls', []);
-//     (async()=>{
-// const test = await get('http://localhost:3030/jsonstore/waterfalls')
 
-// console.log(test)
-// })()
-// console.log(Object.values(waterfalls).slice(-2));
+    //     (async()=>{
+    // const test = await get('http://localhost:3030/jsonstore/waterfalls')
+    // console.log(test)
+    // })()
+
+    // console.log(Object.values(waterfalls).slice(-2));
 
     return (
         <>
-            <div className="wrapper">
-                <div className={styles.body}>
-                    <h1>Водопадите в България</h1>
+            {isFetching ? <div>LOADING...</div>
 
-                    <div className={styles.whArticle}>
-                        {Object.values(waterfalls).slice(-3).map((waterfall)=>
-                        <article className={styles.whCard} key={waterfall._id}>
-                            <h3>{waterfall.name}</h3>
-                            <img src={waterfall.imageUrl} />
-                            <h4>{waterfall.description}</h4>
-                            <Link to= {`/catalogue/${waterfall._id}/details`}>Details</Link>
-                        </article>)}
+                : <>{ waterfalls.length!==0?
+                    <div className="wrapper">
+                        <div className={styles.body}>
+                            <h1>Водопадите в България</h1>
+
+                            <div className={styles.whArticle}>
+                                {Object.values(waterfalls).slice(-3).reverse().map((waterfall) =>
+                                    <article className={styles.whCard} key={waterfall._id}>
+                                        <h3>{waterfall.name}</h3>
+                                        <img src={waterfall.imageUrl} />
+                                        <h4>{waterfall.description}</h4>
+                                        <Link to={`/catalogue/${waterfall._id}/details`}>Details</Link>
+                                    </article>)}
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                    :<h1>No waterfalls yet</h1>}
+                </>
+            }
         </>
     )
 }
