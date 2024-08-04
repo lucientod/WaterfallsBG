@@ -1,8 +1,8 @@
 import styles from "./Details.module.css"
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch.js";
 import { useEffect, useState } from "react";
-import * as comAPI from "../../api/comments.js"
+import * as comAPI from "../../api/comments-api.js"
 
 export default function Details() {
     const { WaterfallId } = useParams()

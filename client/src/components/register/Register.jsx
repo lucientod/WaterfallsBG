@@ -7,18 +7,18 @@ export default function Login() {
                 <legend>Register</legend>
 
                 <p className={styles.field}>
-                    <input type="email" name="email" id="email" required/>
-                        <label for="email">Email</label>
+                    <input type="email" name="email" id="email" autoComplete="email" required/>
+                        <label htmlFor="email">Email</label>
                 </p>
 
                 <p className={styles.field} >
-                    <input type="password" name="password" id="password" required/>
-                        <label for="password">Password</label>
+                    <input type="password" name="password" id="password" autoComplete="password" required/>
+                        <label htmlFor="password">Password</label>
                 </p>
 
                 <p className={styles.field} >
-                    <input type="password" name="rePassword" id="rePassword" required/>
-                        <label for="rePassword">Confirm Password</label>
+                    <input type="password" name="rePassword" id="rePassword" autoComplete="rePassword" required/>
+                        <label htmlFor="rePassword">Confirm Password</label>
                 </p>
 
                 <input type="submit" value="Register"/>

@@ -27,6 +27,7 @@ export default function Home() {
                             <h1>Водопадите в България</h1>
 
                             <div className={styles.whArticle}>
+                                {/* THIS IS OVERFETCHING */}
                                 {Object.values(waterfalls).slice(-3).reverse().map((waterfall) =>
                                     <article className={styles.whCard} key={waterfall._id}>
                                         <h3>{waterfall.name}</h3>
