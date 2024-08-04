@@ -1,7 +1,7 @@
 
 
 export default async function requester(method, url, data) {
-    
+
     const options = {}
 
     if (method !== 'GET') {
@@ -19,13 +19,13 @@ export default async function requester(method, url, data) {
         })
         options.body = JSON.stringify(data)
     }
-    const response = await fetch(url, options )
+    const response = await fetch(url, options)
     const result = await response.json()
-    // console.log(result)
+    console.log(result)
     return result || abortController.abort('ABORT')
 
 }
-const get = async (url) => await requester('GET', url)
+const get = (url) => requester('GET', url)
 const post = (url, data) => requester('POST', url, data)
 const put = (url, data) => requester('PUT', url, data)
 const del = (url, data) => requester('DELETE', url, data)

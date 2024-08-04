@@ -2,27 +2,26 @@ import styles from "./Login.module.css";
 
 import { useLogin } from "../../hooks/useAuth.js";
 import useForm from "../../hooks/useForm.js";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
-    const navigate = Navigate()
+    const navigate = useNavigate()
     const initialValues = {
         email: '',
         password: '',
     }
     const login = useLogin()
-    const { values, changeHandler, submitHandler } = useForm(
-        initialValues,
-        async ({ email, password }) => {
-            try {
-                await login(email, password)
-                navigate('/')
-                
-            } catch (err) {
-                console.error(err.message)
-            }
-        },
-    )
+    const loginHandler = async ({ email, password }) => {
+        try {
+            await login(email, password)
+            navigate('/')
+
+        } catch (err) {
+            console.error(err.message)
+        }
+    }
+    
+    const { values, changeHandler, submitHandler } = useForm(initialValues, loginHandler)
 
 
 
