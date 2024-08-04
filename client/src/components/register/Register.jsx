@@ -2,24 +2,29 @@ import { useNavigate } from "react-router-dom";
 import { useRegister } from "../../hooks/useAuth.js";
 import styles from "./Register.module.css";
 import useForm from "../../hooks/useForm.js";
+import { useState } from "react";
 
 const initialValues = { email: "", password: "", rePassword: "" }
 
 export default function Register() {
-const register = useRegister()
-const navigate = useNavigate()
+    const register = useRegister()
+    const navigate = useNavigate()
+    const [error, setError] = useState('')
 
-const registerHandler = async ({email, password, rePassword}) =>{
-    try {
-        await register(email, password, rePassword)
+    const registerHandler = async ({ email, password, rePassword }) => {
+        try {
+            await register(email, password, rePassword)
 
-        navigate('/')
-    } catch (error) {
-        console.error(error.message)
+            navigate('/')
+        } catch (err) {
+            console.error(err.message)
+            setError(err.message)
+
+        }
+        console.log(error);
+
     }
-
-}
-const {values,changeHandler,submitHandler}= useForm(initialValues, registerHandler)
+    const { values, changeHandler, submitHandler } = useForm(initialValues, registerHandler)
 
     return (
         <form onSubmit={submitHandler} className={styles.login}>
@@ -40,6 +45,8 @@ const {values,changeHandler,submitHandler}= useForm(initialValues, registerHandl
                     <input onChange={changeHandler} value={values.rePassword} type="password" name="rePassword" id="rePassword" autoComplete="rePassword" required />
                     <label htmlFor="rePassword">Confirm Password</label>
                 </p>
+
+                {error && <span className={styles.error}>{error}</span>}
 
                 <input type="submit" value="Register" />
 

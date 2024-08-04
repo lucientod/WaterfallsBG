@@ -3,9 +3,12 @@ import styles from "./Login.module.css";
 import { useLogin } from "../../hooks/useAuth.js";
 import useForm from "../../hooks/useForm.js";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function Login() {
     const navigate = useNavigate()
+    const [error, setError] = useState('')
+
     const initialValues = {
         email: '',
         password: '',
@@ -18,6 +21,7 @@ export default function Login() {
 
         } catch (err) {
             console.error(err.message)
+            setError(err.message)
         }
     }
     
@@ -40,6 +44,9 @@ export default function Login() {
                     <input type="password" name="password" id="password" autoComplete="password" onChange={changeHandler} value={values.password} required />
                     <label htmlFor="password">Password</label>
                 </p>
+
+                {error && <span className={styles.error}>{error}</span>}
+
 
                 <input type="submit" value="Login" />
 

@@ -21,7 +21,11 @@ export default async function requester(method, url, data) {
     }
     const response = await fetch(url, options)
     const result = await response.json()
-    console.log(result)
+    console.log(result.message)
+    if (!response.ok) {
+        throw new Error(result.message)
+    }
+
     return result || abortController.abort('ABORT')
 
 }
