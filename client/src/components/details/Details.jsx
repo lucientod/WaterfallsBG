@@ -6,7 +6,7 @@ import * as comAPI from "../../api/comments-api.js"
 
 export default function Details() {
     const { WaterfallId } = useParams()
-    const { data: waterfall, isFetching } = useFetch(`http://localhost:3030/jsonstore/waterfalls/${WaterfallId}`, {})
+    const { data: waterfall, isFetching } = useFetch(`http://localhost:3030/data/waterfalls/${WaterfallId}`, {})
 
     const [newComment, setNewComment] = useState("")
     const [comments, setComments] = useState([])

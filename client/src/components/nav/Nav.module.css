@@ -1,4 +1,4 @@
-.nav{
+.nav {
     margin: 0.6em auto;
     padding: 0.1em 1em 0.5em 1em;
     background-color: rgb(97, 105, 2);
@@ -6,26 +6,32 @@
     flex: 0 0 auto;
     gap: 1em;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     flex-direction: row;
     border-radius: 0.5em;
 }
+
 .nav a {
     flex: 0 1 auto;
     border: 0px;
-    text-decoration:underline ;
+    text-decoration: underline;
     background-color: inherit;
     box-shadow: none;
     color: aliceblue;
 }
-.nav a:hover{
+
+.nav a:hover {
     text-decoration: overline;
     color: darkblue;
     cursor: pointer;
 
 }
 
-.nav .routes{
+.nav .routes {
     display: flex;
     gap: 1em;
+}
+
+.nav span {
+    color: white;
 }

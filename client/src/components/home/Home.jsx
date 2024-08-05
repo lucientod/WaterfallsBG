@@ -8,10 +8,10 @@ export default function Home() {
         data: waterfalls,
         isFetching,
         refetch,
-    } = useFetch('http://localhost:3030/jsonstore/waterfalls', []);
+    } = useFetch('http://localhost:3030/data/waterfalls', []);
 
     //     (async()=>{
-    // const test = await get('http://localhost:3030/jsonstore/waterfalls')
+    // const test = await get('http://localhost:3030/data/waterfalls')
     // console.log(test)
     // })()
 

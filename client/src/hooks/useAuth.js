@@ -8,7 +8,7 @@ export const useLogin = () => {
     const loginHandler = async (email, password) => {
         let result
         try {
-             result = await login(email, password)
+            result = await login(email, password)
         } catch (err) {
             console.log(err);
             throw new Error(err.message)
@@ -22,23 +22,24 @@ export const useLogin = () => {
 
 export const useRegister = () => {
     const { changeAuthState } = useContext(AuthContext)
-    try {
-        const registerHandler = async (email, password, rePassword) => {
-            // console.log(`email: ${email} p: ${password}; re: ${rePassword}`);
-            let result
-            if (password !== rePassword)
-                throw new Error("Passwords doesnt match");
-            try {
-                result = await register(email, password)
-            } catch (err) {
-                throw new Error(err.message)
-            }
+
+    const registerHandler = async (email, password, rePassword) => {
+        // console.log(`email: ${email} p: ${password}; re: ${rePassword}`);
+
+        if (password !== rePassword)
+            throw new Error("Passwords doesnt match");
+        try {
+            const result = await register(email, password)
             localStorage.setItem('auth', result.accessToken)
+            result.password = ""
             changeAuthState(result)
+
             return (result)
+        } catch (err) {
+            throw new Error(err.message)
         }
-        return registerHandler
-    } catch (error) {
-        console.log(error.message);
+
     }
+    return registerHandler
+
 }

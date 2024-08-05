@@ -21,7 +21,7 @@ export default function Register() {
             setError(err.message)
 
         }
-        console.log(error);
+        // console.log(error);
 
     }
     const { values, changeHandler, submitHandler } = useForm(initialValues, registerHandler)

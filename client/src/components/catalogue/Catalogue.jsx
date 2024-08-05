@@ -9,7 +9,7 @@ export default function Catalogue() {
         data: waterfalls,
         isFetching,
         refetch,
-    } = useFetch('http://localhost:3030/jsonstore/waterfalls', []);
+    } = useFetch('http://localhost:3030/data/waterfalls', []);
 
     return (
 

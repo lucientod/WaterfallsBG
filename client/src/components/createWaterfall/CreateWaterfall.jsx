@@ -1,7 +1,8 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import styles from "./CreateWaterfall.module.css"
+import { AuthContext } from "../../contexts/AuthContext.js";
 
 const initialFormValues = {
     name: "",
@@ -18,6 +19,7 @@ const initialFormValues = {
 export default function CreateWaterfall() {
     const navigate = useNavigate();
     const [formValues, setFormValues] = useState(initialFormValues)
+const {accessToken} = useContext(AuthContext)
 
     const inputRef = useRef()
     useEffect(() => {
@@ -38,11 +40,14 @@ export default function CreateWaterfall() {
         e.preventDefault();
 
         (async function submit() {
-            const response = await fetch('http://localhost:3030/jsonstore/waterfalls',
+            const response = await fetch('http://localhost:3030/data/waterfalls',
                 {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ ...formValues })
+                    headers: { 'Content-Type': 'application/json', 
+                    "x-authorization": accessToken,
+
+                     },
+                    body: JSON.stringify({ ...formValues }),
                 })
             const result = await response.json()
             console.log(result);

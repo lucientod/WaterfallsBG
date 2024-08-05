@@ -19,7 +19,7 @@ export function useFetch(url, initalData) {
             setIsFetching(false);
         })(),[];
 
-        return () => abortController.abort('change page');
+        // return () => abortController.abort('AbortController: change page');
     }, [url, toggleRefetch]);
 
     const refetch = () => {

@@ -1,6 +1,6 @@
 import * as requester from "./requester.js"
 
-const BASE_URL = 'http://localhost:3030/jsonstore/waterfalls'
+const BASE_URL = 'http://localhost:3030/data/waterfalls'
 const buildUrl = (gameId) => `${BASE_URL}/${gameId}/comments`
 
 const create = async (gameId, username, text) => await requester.post(buildUrl(gameId), { username, text })
