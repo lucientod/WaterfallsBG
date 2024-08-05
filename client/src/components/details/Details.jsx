@@ -6,7 +6,7 @@ import { useContext, useEffect, useState } from "react";
 import { useFetch } from "../../hooks/useFetch.js";
 import useForm from "../../hooks/useForm.js";
 import { AuthContext, useAuthContext } from "../../contexts/AuthContext.jsx";
-import {useCreateComment, useGetAllComments } from "../../hooks/useComments.js";
+import { useCreateComment, useGetAllComments } from "../../hooks/useComments.js";
 
 const initialValues = { comment: '' }
 
@@ -15,7 +15,8 @@ export default function Details() {
     const { data: waterfall, isFetching } = useFetch(`http://localhost:3030/data/waterfalls/${WaterfallId}`, {})
     const createComment = useCreateComment()
     const { isAuth } = useContext(AuthContext)
-const [comments, setComments] = useGetAllComments(WaterfallId)
+    const [comments, setComments] = useGetAllComments(WaterfallId)
+    console.log(comments);
 
     const {
         changeHandler,
@@ -58,10 +59,21 @@ const [comments, setComments] = useGetAllComments(WaterfallId)
             </article >
             <div className={styles.articleWrapper}>
                 <article className={styles.comments}>
+
+                    <article>
+                        <h3>Comments:</h3>
+                        {comments.map(comment => (
+                            <li key={comment._id} className={styles.comment}>
+                                <p>username: {comment.text}</p>
+                            </li>
+                        ))}
+                        {comments.length === 0 && <p>No comments yet</p>}
+                    </article>
+
                     <div className={styles.createComment}>
                         {isAuth && (
                             <form onSubmit={submitHandler}>
-                                <label htmlFor="text">Comment</label>
+                                <label htmlFor="text">Add Comment</label>
                                 <input type="text"
                                     id="comment"
                                     name="comment"
@@ -70,13 +82,7 @@ const [comments, setComments] = useGetAllComments(WaterfallId)
                                 <input type="submit" />
                             </form>)}
                     </div>
-                    <article>
-                        {waterfall.comments && comments.map(comment => (
-                            <li key={comment._id} className={styles.comment}>
-                                <p>{comment.username}: {comment.text}</p>
-                            </li>
-                        ))}
-                    </article>
+
                 </article>
             </div>
         </>

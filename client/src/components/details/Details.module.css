@@ -10,37 +10,49 @@
 }
 
 .mainArticle img {
-    position: 0.5em;
     max-width: 50%;
     border-radius: 0.5em;
 }
-.mainArticle h1{
+
+.mainArticle h1 {
     padding: 0.3em;
     font-size: 30px;
     text-decoration: underline;
 }
-.mainArticle ul{
+
+.mainArticle ul {
     margin: 0.8em;
 }
+
 .mainArticle li {
     font-size: 16px;
     padding: 0.1em;
     list-style-type: none;
 }
-.title{
+
+.title {
     font-weight: bold;
 }
 
-.articleWrapper{
+.articleWrapper {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 20px;
+}
+
+.articleWrapper > article {
+    background-color: rgb(236, 237, 238);
+    width: 100%;
+    max-width: 700px;
+    padding: 20px;
+    border-radius: 8px;
 }
 
 .comments {
     margin: 20px;
     padding: 20px;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     border-radius: 8px;
     background-color: #f9f9f9;
     width: 100%;
@@ -48,7 +60,10 @@
 }
 
 .createComment {
-    margin-bottom: 20px;
+    border-radius: 0.5em;
+    margin: 3em 0;
+    padding: 1em;
+    background-color: rgb(175, 231, 175);
 }
 
 .createComment form {
@@ -83,17 +98,27 @@
     background-color: orange;
 }
 
-.comments article {
-    /* margin: 0 auto; */
-    list-style-type: none;
-    padding: 0;
-}
-
 .comment {
-    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    margin: 0.5em 0;
+    padding: 6px;
     border-bottom: 1px solid #eee;
+    border: 1px solid black;
+    border-radius: 0.5em;
+    word-wrap: break-word; /* Ensure long words break to the next line */
+    overflow-wrap: break-word; /* Ensure long words break to the next line */
+    max-width: 100%; /* Prevent the comment box from exceeding its container */
 }
 
 .comment p {
     margin: 0;
+}
+
+.comments article {
+    list-style-type: none;
+    background-color: rgb(175, 231, 175);
+    padding: 1em;
+    border-radius: 0.5em;
+    overflow: hidden; /* Prevent content from overflowing */
 }
