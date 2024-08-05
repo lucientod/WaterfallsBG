@@ -1,7 +1,7 @@
 import { NavLink, Link } from 'react-router-dom'
 import styles from './Nav.module.css'
 import { useContext } from 'react'
-import { AuthContext } from '../../contexts/AuthContext.js'
+import { AuthContext } from '../../contexts/AuthContext.jsx'
 
 export default function Navigation() {
     const { isAuth, email } = useContext(AuthContext)

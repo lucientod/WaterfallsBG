@@ -2,7 +2,7 @@ import styles from "./Login.module.css";
 
 import { useLogin } from "../../hooks/useAuth.js";
 import useForm from "../../hooks/useForm.js";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 export default function Login() {
@@ -49,6 +49,7 @@ export default function Login() {
 
 
                 <input type="submit" value="Login" />
+                <Link to="/register">Not registered? Go to Register</Link>
 
             </fieldset>
         </form>

@@ -2,7 +2,7 @@ import { useRef, useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import styles from "./CreateWaterfall.module.css"
-import { AuthContext } from "../../contexts/AuthContext.js";
+import { AuthContext } from "../../contexts/AuthContext.jsx";
 
 const initialFormValues = {
     name: "",
@@ -19,7 +19,7 @@ const initialFormValues = {
 export default function CreateWaterfall() {
     const navigate = useNavigate();
     const [formValues, setFormValues] = useState(initialFormValues)
-const {accessToken} = useContext(AuthContext)
+    const { accessToken } = useContext(AuthContext)
 
     const inputRef = useRef()
     useEffect(() => {
@@ -32,7 +32,7 @@ const {accessToken} = useContext(AuthContext)
             ...oldValues,
             [e.target.name]: e.target.value,
         }))
-        console.log(`${Object.values(formValues)}`);
+        // console.log(`${Object.values(formValues)}`);
     }
 
     const formSubmitHandler = (e) => {
@@ -40,20 +40,34 @@ const {accessToken} = useContext(AuthContext)
         e.preventDefault();
 
         (async function submit() {
-            const response = await fetch('http://localhost:3030/data/waterfalls',
-                {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 
-                    "x-authorization": accessToken,
+            try {
 
-                     },
-                    body: JSON.stringify({ ...formValues }),
-                })
-            const result = await response.json()
-            console.log(result);
+                const response = await fetch('http://localhost:3030/data/waterfalls',
+                    {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            "x-authorization": accessToken,
+
+                        },
+                        body: JSON.stringify({ ...formValues }),
+                    })
+                const result = await response.json()
+                // console.log(`THIS IS IT: ` + result);
+
+                if (result.code === 403) {
+                    throw new Error(result.message);
+                } else {
+                    navigate(`/catalogue/${result._id}/details`);
+                }
+
+            } catch (err) {
+                // console.log(err);
+                throw new Error(err);
+
+            }
         })();
         console.log(`formValues: ${formValues}`);
-        navigate('/catalogue')
     }
 
     return (

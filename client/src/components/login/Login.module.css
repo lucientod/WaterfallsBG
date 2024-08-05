@@ -1,4 +1,5 @@
 .login {
+    position: relative;
     max-width: 800px;
     margin: 0 auto;
     display: flex;
@@ -74,4 +75,13 @@
 .error {
     color: red;
     font-size: 1.5em;
+}
+
+
+.login a{
+    border: none;
+    top: 92%;
+    right: 5%;
+    position:absolute;
+    padding: 0.2em;
 }

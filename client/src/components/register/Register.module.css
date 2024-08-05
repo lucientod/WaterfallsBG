@@ -1,5 +1,6 @@
 
-.login {
+.register {
+    position: relative;
     max-width: 800px;
     margin: 0 auto;
     display: flex;
@@ -10,7 +11,7 @@
     box-shadow: 0 0 1em 0 rgb(0,0,0,0.2);
 }
 
-.login fieldset {
+.register fieldset {
     display: block;
     width: 100%;
     border: none;
@@ -18,7 +19,7 @@
     padding: 2em;
 }
 
-.login legend {
+.register legend {
     display: block;
     font-weight: bold;
     font-size: 1.8em;
@@ -26,13 +27,13 @@
     padding-bottom: 1.5rem;
 }
 
-.login label {
+.register label {
     display: block;
     font-weight: bold;
     font-size: 1.2em;
 }
 
-.login input {
+.register input {
     display: block;
     width: 100%;
     border-radius: 0.3em;
@@ -40,7 +41,7 @@
     padding: 0.5em 1.5em;
 }
 
-.login input[type="submit"] {
+.register input[type="submit"] {
     border: none;
     background: lightgrey;
     font-weight: bold;
@@ -48,12 +49,12 @@
     margin-top: 1em;
 }
 
-.login input[type="submit"]:hover{
+.register input[type="submit"]:hover{
     cursor: pointer;
     background: orange;
 }
 
-.login .field {
+.register .field {
     display: flex;
     flex-direction: column;
     padding-bottom: 1.5em;
@@ -64,7 +65,7 @@
     order: -1;
 }
 
-.login input:required ~ label::after {
+.register input:required ~ label::after {
     display: inline-block;
     content: '*';
     padding-left: 0.3em;
@@ -73,4 +74,12 @@
 .error{
     color: red;
     font-size: 1.5em;
+}
+
+.register a{
+    border: none;
+    top: 94%;
+    right: 5%;
+    position:absolute;
+    padding: 0.1em;
 }

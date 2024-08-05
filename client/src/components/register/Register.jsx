@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useRegister } from "../../hooks/useAuth.js";
 import styles from "./Register.module.css";
 import useForm from "../../hooks/useForm.js";
@@ -27,7 +27,7 @@ export default function Register() {
     const { values, changeHandler, submitHandler } = useForm(initialValues, registerHandler)
 
     return (
-        <form onSubmit={submitHandler} className={styles.login}>
+        <form onSubmit={submitHandler} className={styles.register}>
             <fieldset>
                 <legend>Register</legend>
 
@@ -50,6 +50,7 @@ export default function Register() {
 
                 <input type="submit" value="Register" />
 
+                <Link to="/login">Already signed up? Go to Login</Link>
             </fieldset>
         </form>
     )

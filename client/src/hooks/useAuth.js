@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { AuthContext } from "../contexts/AuthContext.js";
-import { login, register } from "../api/auth-api.js";
+import { AuthContext, useAuthContext,  } from "../contexts/AuthContext.jsx";
+import { login, logout, register } from "../api/auth-api.js";
 
 export const useLogin = () => {
     const { changeAuthState } = useContext(AuthContext)
@@ -13,7 +13,7 @@ export const useLogin = () => {
             console.log(err);
             throw new Error(err.message)
         }
-        localStorage.setItem("auth", result.accessToken)
+        result.password = ""
         changeAuthState(result)
         return result
     }
@@ -30,7 +30,6 @@ export const useRegister = () => {
             throw new Error("Passwords doesnt match");
         try {
             const result = await register(email, password)
-            localStorage.setItem('auth', result.accessToken)
             result.password = ""
             changeAuthState(result)
 
@@ -41,5 +40,20 @@ export const useRegister = () => {
 
     }
     return registerHandler
+}
 
+export const useLogout = ()=>{
+    const { AuthLogout } = useAuthContext()
+
+    const logoutHandler = async () => {        
+        try {
+            await logout()
+             AuthLogout()
+
+        } catch (err) {
+            throw new Error(err.message)
+        }
+
+    }
+    return logoutHandler
 }

@@ -1,13 +1,16 @@
 
 
 export default async function requester(method, url, data) {
-    const abortController = new AbortController();
+    // const abortController = new AbortController();
 
     const options = {}
 
     const accessToken = localStorage.getItem('accessToken')
-    if(accessToken)
-        options.headers["X-Authorization"] = accessToken
+    if (accessToken)
+        options.headers = {
+            ...options.headers,
+            "X-Authorization": accessToken,
+        }
 
     if (method !== 'GET') {
         options.method = method
@@ -18,16 +21,22 @@ export default async function requester(method, url, data) {
             ...options.headers,
             'Content-Type': 'application/json'
         }
-
         options.body = JSON.stringify(data)
     }
-    const response = await fetch(url, options, { signal: abortController.signal })
+    console.log(accessToken);
+
+    const response = await fetch(url, options)
+    if ((response.status === 204)) {
+        return
+    }
+
     const result = await response.json()
     // console.log(result.message)
     if (!response.ok) {
         throw new Error(result.message)
     }
-    return { result, abort: () => abortController.abort('ABORT') };
+    return result
+    // abort: () => abortController.abort('ABORT') };
 
 }
 const get = (url) => requester('GET', url)
