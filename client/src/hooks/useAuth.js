@@ -52,7 +52,6 @@ export const useLogout = ()=>{
         } catch (err) {
             throw new Error(err.message)
         }
-
     }
     return logoutHandler
 }
