@@ -22,7 +22,7 @@ export function AuthContextProvider(props) {
 
     const AuthLogout = () => {
         setAuthState(null)
-        // localStorage.removeItem('accessToken')
+        localStorage.removeItem('accessToken')
     }
 
     const contextData = {

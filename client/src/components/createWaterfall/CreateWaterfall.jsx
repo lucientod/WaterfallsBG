@@ -36,7 +36,7 @@ export default function CreateWaterfall() {
     }
 
     const formSubmitHandler = (e) => {
-        console.log(e);
+        // console.log(e);
         e.preventDefault();
 
         (async function submit() {
@@ -67,7 +67,7 @@ export default function CreateWaterfall() {
 
             }
         })();
-        console.log(`formValues: ${formValues}`);
+        // console.log(`formValues: ${formValues}`);
     }
 
     return (

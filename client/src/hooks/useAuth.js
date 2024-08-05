@@ -37,7 +37,6 @@ export const useRegister = () => {
         } catch (err) {
             throw new Error(err.message)
         }
-
     }
     return registerHandler
 }

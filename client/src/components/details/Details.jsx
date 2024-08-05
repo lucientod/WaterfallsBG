@@ -1,29 +1,31 @@
 import styles from "./Details.module.css"
+
 import { useParams } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+
 import { useFetch } from "../../hooks/useFetch.js";
-import { useEffect, useState } from "react";
-import * as comAPI from "../../api/comments-api.js"
+import useForm from "../../hooks/useForm.js";
+import { AuthContext, useAuthContext } from "../../contexts/AuthContext.jsx";
+import {useCreateComment, useGetAllComments } from "../../hooks/useComments.js";
+
+const initialValues = { comment: '' }
 
 export default function Details() {
     const { WaterfallId } = useParams()
     const { data: waterfall, isFetching } = useFetch(`http://localhost:3030/data/waterfalls/${WaterfallId}`, {})
+    const createComment = useCreateComment()
+    const { isAuth } = useContext(AuthContext)
+const [comments, setComments] = useGetAllComments(WaterfallId)
 
-    const [newComment, setNewComment] = useState("")
-    const [comments, setComments] = useState([])
+    const {
+        changeHandler,
+        submitHandler,
+        values
+    } = useForm(initialValues, ({ comment }) => {
+        console.log(values)
+        createComment(WaterfallId, comment)
+    })
 
-    useEffect(() => {
-        if (waterfall && waterfall.comments) {
-            setComments(Object.values(waterfall.comments))
-        }
-    }, [])
-
-    const CommentSubmitHandler = async (e) => {
-        e.preventDefault()
-        const updatedComments = await comAPI.create(WaterfallId, 'username', newComment)
-        setComments((prevComment) => [...prevComment, updatedComments])
-        setNewComment('')
-    }
-    // console.log((Object.valueswaterfall.comments));
     return (
         <>
             <article className={styles.mainArticle}>
@@ -57,11 +59,16 @@ export default function Details() {
             <div className={styles.articleWrapper}>
                 <article className={styles.comments}>
                     <div className={styles.createComment}>
-                        <form onSubmit={CommentSubmitHandler}>
-                            <label htmlFor="text">Comment</label>
-                            <input type="text" id="text" name="text" onChange={(e) => setNewComment(e.target.value)} value={newComment} />
-                            <input type="submit" />
-                        </form>
+                        {isAuth && (
+                            <form onSubmit={submitHandler}>
+                                <label htmlFor="text">Comment</label>
+                                <input type="text"
+                                    id="comment"
+                                    name="comment"
+                                    onChange={changeHandler}
+                                    value={values.comment} />
+                                <input type="submit" />
+                            </form>)}
                     </div>
                     <article>
                         {waterfall.comments && comments.map(comment => (

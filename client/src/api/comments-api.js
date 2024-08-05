@@ -1,17 +1,11 @@
 import * as requester from "./requester.js"
 
-const BASE_URL = 'http://localhost:3030/data/waterfalls'
-const buildUrl = (gameId) => `${BASE_URL}/${gameId}/comments`
+const BASE_URL = 'http://localhost:3030/data/comments'
 
-const create = async (gameId, username, text) => await requester.post(buildUrl(gameId), { username, text })
+const create = async (gameId, text) => await requester.post(BASE_URL, { gameId, text })
 
-const getAll = async (gameId) => {
-    const result = await requester.get(buildUrl(gameId))
+const getAll = async (gameId) => await requester.get(BASE_URL)
 
-    const comments = Object.values(result)
-
-    return comments
-}
 
 export {
     create, getAll
