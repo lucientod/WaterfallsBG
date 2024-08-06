@@ -94,8 +94,8 @@ export default function Details() {
                 <img src={waterfall.imageUrl} />
 
                 {isOwner && <div className={styles.buttonsWrapper}>
-                    <Link to={`/catalogue/${waterfallId}/edit`}>Edit</Link>
-                    <Link onClick={handleClickModal} to={'#'}>Delete</Link>
+                    <Link to={`/catalogue/${waterfallId}/edit`}>Промени</Link>
+                    <Link onClick={handleClickModal} to={'#'}>Изтрий</Link>
                 </div>}
             </article >
 
@@ -106,7 +106,7 @@ export default function Details() {
                 <article className={styles.comments}>
 
                     <article>
-                        <h3>Comments:</h3>
+                        <h3>Коментари:</h3>
                         {comments.map(comment => (
                             <li key={comment._id} className={styles.comment}>
                                 <p>{comment.author
@@ -115,7 +115,7 @@ export default function Details() {
                                 }: {comment.text}</p>
                             </li>
                         ))}
-                        {comments.length === 0 && <p>No comments yet</p>}
+                        {comments.length === 0 && <p>Все още няма коментари</p>}
                     </article>
 
                     <div className={styles.createComment}>
@@ -125,10 +125,10 @@ export default function Details() {
                                 <input type="text"
                                     id="comment"
                                     name="comment"
-                                    placeholder="eg. This is amazing!"
+                                    placeholder="Водопадите са страхотни!"
                                     onChange={changeHandler}
                                     value={values.comment} />
-                                <input type="submit" />
+                                <input type="submit" value="Изпрати" />
                             </form>)}
                     </div>
 

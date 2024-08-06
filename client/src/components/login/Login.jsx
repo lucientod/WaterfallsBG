@@ -33,23 +33,23 @@ export default function Login() {
     return (
         <form onSubmit={submitHandler} className={styles.login}>
             <fieldset>
-                <legend>Login</legend>
+                <legend>Вход</legend>
 
                 <p className={styles.field}>
                     <input type="email" name="email" id="email" autoComplete="email" onChange={changeHandler} value={values.email} required />
-                    <label htmlFor="email">Email</label>
+                    <label htmlFor="email">Е-мейл</label>
                 </p>
 
                 <p className={styles.field} >
                     <input type="password" name="password" id="password" autoComplete="password" onChange={changeHandler} value={values.password} required />
-                    <label htmlFor="password">Password</label>
+                    <label htmlFor="password">Парола</label>
                 </p>
 
                 {error && <span className={styles.error}>{error}</span>}
 
 
-                <input type="submit" value="Login" />
-                <Link to="/register">Not registered? Click here.</Link>
+                <input type="submit" value="Вход" />
+                <Link to="/register">Имате регистрация? Натиснете тук.</Link>
 
             </fieldset>
         </form>

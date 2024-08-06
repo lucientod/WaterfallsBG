@@ -9,22 +9,22 @@ export default function Navigation() {
         <nav className={styles.nav}>
            
             <div className={styles.routes}>
-                <Link to="/">Home</Link>
-                <Link to="/catalogue">Catalogue</Link>
+                <Link to="/">Начална страница</Link>
+                <Link to="/catalogue">Каталог</Link>
                 {isAuth
                     ? <>
-                        <Link to="/createWaterfall">Create Waterfall</Link>
-                        <Link to="/logout">Logout</Link>
+                        <Link to="/createWaterfall">Създай водопад</Link>
+                        <Link to="/logout">Изход</Link>
                     </>
                     : <>
-                        <Link to="/login">Login</Link>
-                        <Link to="/register">Register</Link>
+                        <Link to="/login">Вход</Link>
+                        <Link to="/register">Регистрация</Link>
                     </>
                 }
             </div>
             {isAuth
-                ? <span>Profile: {email}</span>
-                : <span>Profile: Guest</span>
+                ? <span>Профил: {email}</span>
+                : <span>Профил: Гост</span>
             }
         </nav>
     )

@@ -29,28 +29,28 @@ export default function Register() {
     return (
         <form onSubmit={submitHandler} className={styles.register}>
             <fieldset>
-                <legend>Register</legend>
+                <legend>Регистрация</legend>
 
                 <p className={styles.field}>
                     <input onChange={changeHandler} value={values.email} type="email" name="email" id="email" autoComplete="email" required />
-                    <label htmlFor="email">Email</label>
+                    <label htmlFor="email">Е-майл</label>
                 </p>
 
                 <p className={styles.field} >
                     <input onChange={changeHandler} value={values.password} type="password" name="password" id="password" autoComplete="password" required />
-                    <label htmlFor="password">Password</label>
+                    <label htmlFor="password">Парола</label>
                 </p>
 
                 <p className={styles.field} >
                     <input onChange={changeHandler} value={values.rePassword} type="password" name="rePassword" id="rePassword" autoComplete="rePassword" required />
-                    <label htmlFor="rePassword">Confirm Password</label>
+                    <label htmlFor="rePassword">Потвърди паролата</label>
                 </p>
 
                 {error && <span className={styles.error}>{error}</span>}
 
-                <input type="submit" value="Register" />
+                <input type="submit" value="Регистрирай се" />
 
-                <Link to="/login">Already signed up? Click here.</Link>
+                <Link to="/login">Имате регистрация? Натиснете тук.</Link>
             </fieldset>
         </form>
     )

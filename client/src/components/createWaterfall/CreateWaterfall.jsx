@@ -165,7 +165,7 @@ export default function CreateWaterfall() {
                         type="text"
                         name="imageUrl"
                         id="imageUrl"
-                        placeholder="https:/"
+                        placeholder="https://"
                         value={formValues.imageUrl}
                         onChange={changeHandler}
                         required

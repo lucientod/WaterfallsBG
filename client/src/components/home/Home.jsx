@@ -24,20 +24,20 @@ export default function Home() {
     */
     // const [latestGames, setLatestGames] = useState([])
 
-        // useEffect(() => {
-        //     (async () => {
-        //         const result = await getLatest()
-        //         setLatestGames(result)
-        //     })()
-        //     console.log(latestGames);
-        // }, [])
+    // useEffect(() => {
+    //     (async () => {
+    //         const result = await getLatest()
+    //         setLatestGames(result)
+    //     })()
+    //     console.log(latestGames);
+    // }, [])
 
     return (
         <>
-            {isFetching ? <div>LOADING...</div>
+            {isFetching ? <div>ЗАРЕЖДАНЕ...</div>
 
-                : <>{waterfalls.length !== 0 ?
-                    <div className="wrapper">
+                : <>{waterfalls.length !== 0
+                    ? <div className="wrapper">
                         <div className={styles.body}>
                             <h1>Водопадите в България</h1>
 
@@ -48,12 +48,12 @@ export default function Home() {
                                         <h3>{waterfall.name}</h3>
                                         <img src={waterfall.imageUrl} />
                                         <h4>{waterfall.description}</h4>
-                                        <Link to={`/catalogue/${waterfall._id}/details`}>Details</Link>
+                                        <Link to={`/catalogue/${waterfall._id}/details`}>Детайли</Link>
                                     </article>)}
                             </div>
                         </div>
                     </div>
-                    : <h1>No waterfalls yet</h1>}
+                    : <h1>Все още няма заглавия.</h1>}
                 </>
             }
         </>

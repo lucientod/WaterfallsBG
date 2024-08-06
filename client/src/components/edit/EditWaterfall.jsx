@@ -50,7 +50,7 @@ export default function Edit() {
 
     return (
         <>
-            <h2>Редактиране на водопад</h2>
+            <h2>{`Редактиране на ${waterfall.name}`}</h2>
             <form onSubmit={handleFormSubmit} className={styles.form}>
                 <div className={styles.inputs}>
                     <label htmlFor="name">Име</label>

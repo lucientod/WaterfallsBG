@@ -15,24 +15,25 @@ export default function Catalogue() {
 
         <div className={styles.wrapper}>
 
-            {isFetching ? <div>LOADING...</div>
+            {isFetching ? <div>ЗАРЕЖДАНЕ...</div>
                 :
                 <>
-                   {!Object.values(waterfalls)
-                   ? <h1>No waterfalls yet</h1>
-                   :Object.values(waterfalls).map((waterfall)=>
-                    <article className={styles.wcCard} key={waterfall._id}>
+                    {waterfalls.length !== 0 ?
+                        <> {Object.values(waterfalls).map((waterfall) =>
+                            <article className={styles.wcCard} key={waterfall._id}>
 
-                        <div>
-                            <img src={waterfall.imageUrl} />
-                        </div>
-                        <div className={styles.info}>
-                            <h3>{waterfall.name}</h3>
-                            <p>Географско местоположение: {waterfall.location}</p>
-                            <p>Височина: {waterfall.height}</p>                            
-                            <Link to= {`/catalogue/${waterfall._id}/details`}>Details</Link>
-                        </div>
-                    </article>)}
+                                <div>
+                                    <img src={waterfall.imageUrl} />
+                                </div>
+                                <div className={styles.info}>
+                                    <h3>{waterfall.name}</h3>
+                                    <p>Географско местоположение: {waterfall.location}</p>
+                                    <p>Височина: {waterfall.height}</p>
+                                    <Link to={`/catalogue/${waterfall._id}/details`}>Детайли</Link>
+                                </div>
+                            </article>)
+                        }</>
+                        : <h1>Все още няма заглавия.</h1>}
                 </>
             }
 
