@@ -12,32 +12,38 @@ import Edit from './components/edit/EditWaterfall.jsx'
 import Login from './components/login/Login.jsx'
 import Register from './components/register/Register.jsx'
 import Logout from './components/logout/Logout.jsx'
+import AuthViewGuard from './components/common/AuthViewGuard.jsx'
+import Modal from './components/modal/Modal.jsx'
+import MainComponent from './components/modal/MainComponent.jsx'
 
 function App() {
- 
 
-  return (
-    <AuthContextProvider >
-      <main className='main-container'>
 
-        <Nav />
+    return (
+        <AuthContextProvider >
+            <main className='main-container'>
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="catalogue" element={<Catalogue />} />
-          <Route path="createWaterfall" element={<CreateWaterfall />} />
-          <Route path="catalogue/:waterfallId/details" element={<Details />} />
-          <Route path="catalogue/:waterfallId/edit" element={<Edit />} />
-          <Route path="login" element={<Login />} />
-          <Route path="register" element={<Register />} />
-          <Route path="logout" element={<Logout />} />
+                <Nav />
 
-        </Routes>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="catalogue" element={<Catalogue />} />
+                    <Route path="catalogue/:waterfallId/details" element={<Details />} />
+                    <Route path="login" element={<Login />} />
+                    <Route path="register" element={<Register />} />
+                    <Route element={<AuthViewGuard />}>
+                        <Route path="createWaterfall" element={<CreateWaterfall />} />
+                        <Route path="catalogue/:waterfallId/edit" element={<Edit />} />
+                        <Route path="logout" element={<Logout />} />
+                    </Route>
 
-        <Footer />
-      </main>
-    </AuthContextProvider>
-  )
+                    <Route path='modal' element={<MainComponent />} />
+                </Routes>
+
+                <Footer />
+            </main>
+        </AuthContextProvider>
+    )
 }
 
 export default App

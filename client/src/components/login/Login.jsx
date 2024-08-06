@@ -49,7 +49,7 @@ export default function Login() {
 
 
                 <input type="submit" value="Login" />
-                <Link to="/register">Not registered? Go to Register</Link>
+                <Link to="/register">Not registered? Click here.</Link>
 
             </fieldset>
         </form>

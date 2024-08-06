@@ -50,7 +50,7 @@ export default function Register() {
 
                 <input type="submit" value="Register" />
 
-                <Link to="/login">Already signed up? Go to Login</Link>
+                <Link to="/login">Already signed up? Click here.</Link>
             </fieldset>
         </form>
     )

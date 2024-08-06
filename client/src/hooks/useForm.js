@@ -1,9 +1,20 @@
 import { useState, useRef, useEffect } from "react";
 
 
-export default function useForm(initialValues, submitCallback) {
+export default function useForm(initialValues, submitCallback, options = { reinitializeForm: false }) {
 
     const [values, setValues] = useState(initialValues)
+
+    //Reinitialize form values
+    useEffect(() => {
+        if (options.reinitializeForm) {
+            setValues(initialValues)
+        }
+    }, [initialValues, options])
+
+    const reinitializeForm = () => {
+        setValues(initialValues) 
+    }
 
     // const inputRef = useRef()
     // useEffect(() => {
