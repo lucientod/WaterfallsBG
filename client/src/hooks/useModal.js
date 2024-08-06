@@ -3,24 +3,24 @@ import { useState } from "react";
 export default function useModal() {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const handleClick = () => {
+    const handleClickModal = () => {
         setIsModalOpen(true);
     };
 
-    const handleConfirm = () => {
+    const handleConfirmModal = () => {
         
         setIsModalOpen(false);
     };
 
-    const handleCancel = () => {
+    const handleCancelModal = () => {
         setIsModalOpen(false);
     };
 
 
     return {
-        handleClick,
-        handleConfirm,
-        handleCancel,
+        handleClickModal,
+        handleConfirmModal,
+        handleCancelModal,
         isModalOpen,
     }
 }

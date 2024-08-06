@@ -9,7 +9,7 @@ import { AuthContext, useAuthContext } from "../../contexts/AuthContext.jsx";
 import { useCreateComment, useGetAllComments } from "../../hooks/useComments.js";
 import * as WaterfallAPI from "../../api/waterfall-api.js";
 
-import useModal from "../modal/useModal.js";
+import useModal from "../../hooks/useModal.js";
 import Modal from "../modal/Modal.jsx";
 
 
@@ -31,7 +31,7 @@ export default function Details() {
     const wfDeleteHandler = async () => {
         try {
             await WaterfallAPI.del(waterfallId)
-            handleConfirm()
+            handleConfirmModal()
             navigate('/')
         } catch (err) {
             throw new Error(err.message);
@@ -60,7 +60,7 @@ export default function Details() {
         }
     })
 
-    const { handleClick, handleConfirm, handleCancel, isModalOpen } = useModal()
+    const { handleClickModal, handleConfirmModal, handleCancelModal, isModalOpen } = useModal()
 
 
     return (
@@ -95,7 +95,7 @@ export default function Details() {
 
                 {isOwner && <div className={styles.buttonsWrapper}>
                     <Link to={`/catalogue/${waterfallId}/edit`}>Edit</Link>
-                    <Link onClick={handleClick} to={'#'}>Delete</Link>
+                    <Link onClick={handleClickModal} to={'#'}>Delete</Link>
                 </div>}
             </article >
 
@@ -139,7 +139,7 @@ export default function Details() {
                         <Modal
                             message={`Сигурен ли си, че искаш да изтриеш ${waterfall.name}?`}
                             onConfirm={wfDeleteHandler}
-                            onCancel={handleCancel}
+                            onCancel={handleCancelModal}
                         />
                     )}
                 </div>

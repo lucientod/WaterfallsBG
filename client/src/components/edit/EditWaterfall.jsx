@@ -2,9 +2,11 @@ import styles from "./EditWaterfall.module.css"
 
 import useForm from "../../hooks/useForm.js"
 import { useNavigate, useParams } from "react-router-dom"
-import { useEffect, useMemo, useState } from "react"
+import { useMemo } from "react"
 import { useGetOneWaterfall } from "../../hooks/useWaterfall.js"
 import { update } from "../../api/waterfall-api.js"
+import useModal from "../../hooks/useModal.js"
+import Modal from "../modal/Modal.jsx"
 
 
 const initialValues = {
@@ -18,8 +20,7 @@ const initialValues = {
     imageUrl: '',
 }
 export default function Edit() {
-    //TODO: Make modals for confirm
-    
+
     const navigate = useNavigate()
     // const [waterfall, setWaterfall] = useState([])
     const { waterfallId } = useParams()
@@ -38,10 +39,19 @@ export default function Edit() {
             navigate(`/catalogue/${waterfallId}/details`)
         })
 
+    const handleFormSubmit = (e) => {
+        e.preventDefault(); 
+        handleClickModal(); 
+        
+    };
+
+    const { handleClickModal, handleConfirmModal, handleCancelModal, isModalOpen } = useModal()
+
+
     return (
         <>
             <h2>Редактиране на водопад</h2>
-            <form onSubmit={submitHandler} className={styles.form}>
+            <form onSubmit={handleFormSubmit} className={styles.form}>
                 <div className={styles.inputs}>
                     <label htmlFor="name">Име</label>
                     <textarea
@@ -142,6 +152,15 @@ export default function Edit() {
                 </div>
                 <input type="submit" value="Промени водопад" />
             </form>
+            <div className={styles.modal}>
+                {isModalOpen && (
+                    <Modal
+                        message={`Сигурен ли си, че искаш да промениш ${waterfall.name}?`}
+                        onConfirm={submitHandler}
+                        onCancel={handleCancelModal}
+                    />
+                )}
+            </div>
         </>
     )
 }
