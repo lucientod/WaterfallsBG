@@ -1,6 +1,6 @@
 import styles from "./Details.module.css"
 
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 
 import { useFetch } from "../../hooks/useFetch.js";
@@ -8,25 +8,35 @@ import useForm from "../../hooks/useForm.js";
 import { AuthContext, useAuthContext } from "../../contexts/AuthContext.jsx";
 import { useCreateComment, useGetAllComments } from "../../hooks/useComments.js";
 
-const initialValues = { comment: '' }
+const initialValues = { comment: '', }
 
 export default function Details() {
     const { WaterfallId } = useParams()
     const { data: waterfall, isFetching } = useFetch(`http://localhost:3030/data/waterfalls/${WaterfallId}`, {})
     const createComment = useCreateComment()
+    const {email, userId}=useContext(AuthContext)
     const { isAuth } = useContext(AuthContext)
     const [comments, setComments] = useGetAllComments(WaterfallId)
-    // console.log(comments);
+    console.log(`comments from useGetAllComments`);    
+    console.log(comments);
+    const isOwner = userId===waterfall._ownerId
 
     const {
         changeHandler,
         submitHandler,
         values
     } = useForm(initialValues, async ({ comment }) => {
-        console.log(values)
+
+        console.log(`{comment}`);
+        console.log(comment)
         try {
            const newComment = await createComment(WaterfallId, comment)
-           setComments(oldComm => [...oldComm, newComment])
+
+           console.log('const newComment=');
+           console.log(newComment);
+           
+           
+           setComments(oldComm => [...oldComm, newComment]); 
         } catch (err) {
             throw err
         }
@@ -61,7 +71,16 @@ export default function Details() {
                     <li>{waterfall.description}</li>
                 </ul>
                 <img src={waterfall.imageUrl} />
+
+                <div className={styles.buttonsWrapper}>
+                    <Link to={'#'}>Edit</Link>
+                    <Link to={'#'}>Delete</Link>
+                </div>
             </article >
+
+
+
+
             <div className={styles.articleWrapper}>
                 <article className={styles.comments}>
 
@@ -69,7 +88,10 @@ export default function Details() {
                         <h3>Comments:</h3>
                         {comments.map(comment => (
                             <li key={comment._id} className={styles.comment}>
-                                <p>username: {comment.text}</p>
+                                <p>{comment.author
+                                ?comment.author.email
+                                :email
+                            }: {comment.text}</p>
                             </li>
                         ))}
                         {comments.length === 0 && <p>No comments yet</p>}
