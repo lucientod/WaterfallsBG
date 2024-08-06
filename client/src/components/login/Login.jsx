@@ -5,14 +5,14 @@ import useForm from "../../hooks/useForm.js";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
+const initialValues = {
+    email: '',
+    password: '',
+}
 export default function Login() {
     const navigate = useNavigate()
     const [error, setError] = useState('')
 
-    const initialValues = {
-        email: '',
-        password: '',
-    }
     const login = useLogin()
     const loginHandler = async ({ email, password }) => {
         try {

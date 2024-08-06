@@ -41,7 +41,7 @@
     padding: 20px;
 }
 
-.articleWrapper > article {
+.articleWrapper>article {
     background-color: rgb(236, 237, 238);
     width: 100%;
     max-width: 700px;
@@ -106,9 +106,12 @@
     border-bottom: 1px solid #eee;
     border: 1px solid black;
     border-radius: 0.5em;
-    word-wrap: break-word; /* Ensure long words break to the next line */
-    overflow-wrap: break-word; /* Ensure long words break to the next line */
-    max-width: 100%; /* Prevent the comment box from exceeding its container */
+    word-wrap: break-word;
+    /* Ensure long words break to the next line */
+    overflow-wrap: break-word;
+    /* Ensure long words break to the next line */
+    max-width: 100%;
+    /* Prevent the comment box from exceeding its container */
 }
 
 .comment p {
@@ -120,5 +123,12 @@
     background-color: rgb(175, 231, 175);
     padding: 1em;
     border-radius: 0.5em;
-    overflow: hidden; /* Prevent content from overflowing */
+    overflow: hidden;
+    /* Prevent content from overflowing */
+}
+
+.buttonsWrapper {
+    margin-top: 1em;
+    display: flex;
+    gap: 1em;
 }

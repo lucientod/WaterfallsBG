@@ -25,15 +25,21 @@ export default async function requester(method, url, data) {
     }
 
     const response = await fetch(url, options)
-    if ((response.status === 204)) {
+    if ((response.status === 204))
         return
-    }
+
+    else if (response.status === 403)
+        throw new Error("Wrong username or password!");
+
+    else if (response.status === 409)
+        throw new Error('User already exists!');
+
+    else if (!response.ok)
+        throw new Error(result.message)
 
     const result = await response.json()
     // console.log(result.message)
-    if (!response.ok) {
-        throw new Error(result.message)
-    }
+
     return result
     // abort: () => abortController.abort('ABORT') };
 

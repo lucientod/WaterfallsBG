@@ -1,87 +1,56 @@
-import { useRef, useEffect, useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import styles from "./EditWaterfall.module.css"
 
-import styles from "./CreateWaterfall.module.css"
-import { AuthContext } from "../../contexts/AuthContext.jsx";
+import useForm from "../../hooks/useForm.js"
+import { useNavigate, useParams } from "react-router-dom"
+import { useEffect, useMemo, useState } from "react"
+import { useGetOneWaterfall } from "../../hooks/useWaterfall.js"
+import { update } from "../../api/waterfall-api.js"
 
-const initialFormValues = {
-    name: "",
-    location: "",
-    closestCity: "",
-    height: "",
-    access: "",
-    prefTime: "",
-    description: "",
-    imageUrl: "",
-    _id: "",
+
+const initialValues = {
+    name: '',
+    location: '',
+    closestCity: '',
+    height: '',
+    access: '',
+    prefTime: '',
+    description: '',
+    imageUrl: '',
 }
+export default function Edit() {
+    //TODO: Make modals for confirm
+    
+    const navigate = useNavigate()
+    // const [waterfall, setWaterfall] = useState([])
+    const { waterfallId } = useParams()
 
-export default function CreateWaterfall() {
-    const navigate = useNavigate();
-    const [formValues, setFormValues] = useState(initialFormValues)
-    const { accessToken } = useContext(AuthContext)
+    const [waterfall, setWaterfall] = useGetOneWaterfall(waterfallId)
+    // console.log(waterfall);
+    const initialFormValues = useMemo(() => Object.assign({}, initialValues, waterfall), [waterfall])
+    // console.log(initialFormValues);
 
-    const inputRef = useRef()
-    useEffect(() => {
-        inputRef.current.focus()
-    }, [])
+    const { values, changeHandler, submitHandler, } = useForm(initialFormValues,
+        async (values) => {
+            const updatedWaterfall = await update(waterfallId, values)
+            // console.log(updatedWaterfall);
+            setWaterfall(updatedWaterfall)
 
-    const changeHandler = (e) => {
-        // console.log(`${e.target.value}`);
-        setFormValues(oldValues => ({
-            ...oldValues,
-            [e.target.name]: e.target.value,
-        }))
-        // console.log(`${Object.values(formValues)}`);
-    }
-
-    const formSubmitHandler = (e) => {
-        // console.log(e);
-        e.preventDefault();
-
-        (async function submit() {
-            try {
-
-                const response = await fetch('http://localhost:3030/data/waterfalls',
-                    {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            "x-authorization": accessToken,
-
-                        },
-                        body: JSON.stringify({ ...formValues }),
-                    })
-                const result = await response.json()
-                // console.log(`THIS IS IT: ` + result);
-
-                if (result.code === 403) {
-                    throw new Error(result.message);
-                } else {
-                    navigate(`/catalogue/${result._id}/details`);
-                }
-
-            } catch (err) {
-                // console.log(err);
-                throw new Error(err);
-
-            }
-        })();
-        // console.log(`formValues: ${formValues}`);
-    }
+            navigate(`/catalogue/${waterfallId}/details`)
+        })
 
     return (
         <>
-            <form onSubmit={formSubmitHandler} className={styles.form}>
+            <h2>Редактиране на водопад</h2>
+            <form onSubmit={submitHandler} className={styles.form}>
                 <div className={styles.inputs}>
                     <label htmlFor="name">Име</label>
-                    <input
-                        ref={inputRef}
+                    <textarea
+                        // ref={inputRef}
                         type="text"
                         name="name"
                         id="name"
                         placeholder="Моят водопад"
-                        value={formValues.name}
+                        value={values.name}
                         onChange={changeHandler}
                         required
                     />
@@ -89,89 +58,90 @@ export default function CreateWaterfall() {
 
                 <div className={styles.inputs}>
                     <label htmlFor="location">Географско местоположение</label>
-                    <input
+                    <textarea
                         type="text"
                         name="location"
                         id="location"
                         placeholder="Родопи"
-                        value={formValues.location}
+                        value={values.location}
                         onChange={changeHandler}
                         required
                     />
                 </div>
                 <div className={styles.inputs}>
                     <label htmlFor="closestCity">Най-близко населено място</label>
-                    <input
+                    <textarea
                         type="text"
                         name="closestCity"
                         id="closestCity"
                         placeholder="Град"
-                        value={formValues.closestCity}
+                        value={values.closestCity}
                         onChange={changeHandler}
                         required
                     />
                 </div>
                 <div className={styles.inputs}>
                     <label htmlFor="height">Височина</label>
-                    <input
+                    <textarea
                         type="text"
                         name="height"
                         id="height"
                         placeholder="100м"
-                        value={formValues.height}
+                        value={values.height}
                         onChange={changeHandler}
                         required
                     />
                 </div>
                 <div className={styles.inputs}>
                     <label htmlFor="access">Достъп</label>
-                    <input
+                    <textarea
                         type="text"
                         name="access"
                         id="access"
                         placeholder="Лесен"
-                        value={formValues.access}
+                        value={values.access}
                         onChange={changeHandler}
                         required
                     />
                 </div>
                 <div className={styles.inputs}>
                     <label htmlFor="prefTime">Най-подходящо време</label>
-                    <input
+                    <textarea
                         type="text"
                         name="prefTime"
                         id="prefTime"
                         placeholder="Пролет"
-                        value={formValues.prefTime}
+                        value={values.prefTime}
                         onChange={changeHandler}
                         required
                     />
                 </div>
                 <div className={styles.inputs}>
                     <label htmlFor="description">Описание</label>
-                    <input
+                    <textarea
                         type="text"
                         name="description"
                         id="description"
                         placeholder="Кратко инфо"
-                        value={formValues.description}
+                        value={values.description}
                         onChange={changeHandler}
                         required
                     />
                 </div>
                 <div className={styles.inputs}>
                     <label htmlFor="imageUrl">Адрес на снимка</label>
-                    <input
+                    <textarea
                         type="text"
                         name="imageUrl"
                         id="imageUrl"
                         placeholder="https:/"
-                        value={formValues.imageUrl}
+                        value={values.imageUrl}
                         onChange={changeHandler}
                         required
                     />
                 </div>
-                <input type="submit" value="Качи водопад" />
+                <input type="submit" value="Промени водопад" />
             </form>
-        </>)
+        </>
+    )
 }

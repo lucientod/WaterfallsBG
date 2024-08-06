@@ -1,0 +1,46 @@
+.form {
+    /* display: flex; */
+    flex-direction: column;
+    gap: 0.5em;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputs {
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    align-items: center;
+}
+
+.form textarea[type="submit"] {
+    padding: 0.5em;
+    border: 1px solid gray;
+    border-radius: 0.5em;
+
+}
+.form .inputs label{
+min-width: 200px;
+}
+
+.form input[type="submit"]:hover {
+    cursor: pointer;
+    background: orange;
+    border-radius: 0.5em;
+}
+
+.form label {
+    padding-right: 1em;
+}
+
+.form input::placeholder,
+.form textarea{
+    padding: 0.3em;
+}
+
+textarea {
+    width: 30%;
+    resize: none;
+    overflow: hidden; 
+}

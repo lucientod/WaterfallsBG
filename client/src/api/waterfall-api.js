@@ -9,4 +9,35 @@ export const getAll = async () => {
     return waterfalls
 }
 
-export const getOne = async (gameId) => await requester.get(`${BASE_URL}/${gameId}`)
+export const getOne = async (waterfallId) => await requester.get(`${BASE_URL}/${waterfallId}`)
+
+export const del = async (waterfallId) => await requester.del(`${BASE_URL}/${waterfallId}`)
+
+export const update = (waterfallId, data) => requester.put(`${BASE_URL}/${waterfallId}`, data)
+
+// export const getLatest = async () => {
+//     const urlSearchParams = new URLSearchParams({
+//         sortBy: `_createdOn desc`,
+//         pageSize: 3,
+//     })
+// console.log('urlsearchparams:');
+// console.log(`${BASE_URL}?${urlSearchParams}`)
+
+
+//     const result  = await requester.get(`${BASE_URL}?${urlSearchParams.toString()}`)
+
+//     console.log('RESULT:');
+//     console.log(result);
+    
+    
+//     return Object.values(result)
+// }
+
+
+const WaterfallAPI = {
+    getOne,
+    getAll,
+    del,
+    update,
+    // getLatest,
+}

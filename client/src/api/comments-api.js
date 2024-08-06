@@ -2,11 +2,11 @@ import * as requester from "./requester.js"
 
 const BASE_URL = 'http://localhost:3030/data/comments'
 
-const create = (gameId, text) => requester.post(BASE_URL, { gameId, text })
+const create = (waterfallId, text) => requester.post(BASE_URL, { waterfallId, text })
 
-const getAll = (gameId) => {
+const getAll = (waterfallId) => {
     const params = new URLSearchParams({
-        where: `gameId="${gameId}"`,
+        where: `waterfallId="${waterfallId}"`,
         load:  `author=_ownerId:users`
     })
     // console.log(`${BASE_URL}?${params.toString()}`);

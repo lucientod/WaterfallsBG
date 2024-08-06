@@ -2,13 +2,17 @@ import { useState, useRef, useEffect } from "react";
 
 
 export default function useForm(initialValues, submitCallback) {
-    
+
     const [values, setValues] = useState(initialValues)
 
     // const inputRef = useRef()
     // useEffect(() => {
     //     inputRef.current.focus()
     // }, [])
+
+    useEffect(() => {
+        setValues(initialValues)
+    }, [initialValues])
 
     const changeHandler = (e) => {
         setValues(state => ({
@@ -17,15 +21,15 @@ export default function useForm(initialValues, submitCallback) {
         }))
     }
 
-    const submitHandler = (e) =>{
+    const submitHandler = async (e) => {
         e.preventDefault()
 
-        submitCallback(values)
+        await submitCallback(values)
 
         setValues(initialValues)
     }
 
-    return{
+    return {
         values,
         changeHandler,
         submitHandler,

@@ -3,7 +3,7 @@ import usePersistedState from "../hooks/usePersistedState.js";
 
 
 export const AuthContext = createContext({
-    userId: "",
+    _id: "",
     email: "",
     accessToken: "",
     isAuth: "",
@@ -26,7 +26,7 @@ export function AuthContextProvider(props) {
     }
 
     const contextData = {
-        userId: authState?.userId,
+        _id: authState?._id,
         email: authState?.email,
         accessToken: authState?.accessToken,
         isAuth: !!authState?.email,
