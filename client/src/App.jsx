@@ -13,11 +13,10 @@ import Login from './components/login/Login.jsx'
 import Register from './components/register/Register.jsx'
 import Logout from './components/logout/Logout.jsx'
 import AuthViewGuard from './components/common/AuthViewGuard.jsx'
-import Modal from './components/modal/Modal.jsx'
-import MainComponent from './components/modal/MainComponent.jsx'
+import Example from './components/modal/Example.jsx'
+
 
 function App() {
-
 
     return (
         <AuthContextProvider >
@@ -37,7 +36,7 @@ function App() {
                         <Route path="logout" element={<Logout />} />
                     </Route>
 
-                    <Route path='modal' element={<MainComponent />} />
+                   <Route path='modal' element={<Example/>}/>
                 </Routes>
 
                 <Footer />

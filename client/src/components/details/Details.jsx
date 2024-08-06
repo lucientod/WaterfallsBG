@@ -9,12 +9,15 @@ import { AuthContext, useAuthContext } from "../../contexts/AuthContext.jsx";
 import { useCreateComment, useGetAllComments } from "../../hooks/useComments.js";
 import * as WaterfallAPI from "../../api/waterfall-api.js";
 
+import useModal from "../modal/useModal.js";
+import Modal from "../modal/Modal.jsx";
+
 
 const initialValues = { comment: '', }
 
 export default function Details() {
     const navigate = useNavigate()
-    const {  waterfallId } = useParams()
+    const { waterfallId } = useParams()
     const { data: waterfall, isFetching } = useFetch(`http://localhost:3030/data/waterfalls/${waterfallId}`, {})
     const createComment = useCreateComment()
     const { isAuth, email, _id } = useContext(AuthContext)
@@ -28,10 +31,11 @@ export default function Details() {
     const wfDeleteHandler = async () => {
         try {
             await WaterfallAPI.del(waterfallId)
+            handleConfirm()
             navigate('/')
         } catch (err) {
             throw new Error(err.message);
-            
+
         }
     }
 
@@ -55,6 +59,9 @@ export default function Details() {
             throw err
         }
     })
+
+    const { handleClick, handleConfirm, handleCancel, isModalOpen } = useModal()
+
 
     return (
         <>
@@ -88,7 +95,7 @@ export default function Details() {
 
                 {isOwner && <div className={styles.buttonsWrapper}>
                     <Link to={`/catalogue/${waterfallId}/edit`}>Edit</Link>
-                    <Link onClick={wfDeleteHandler} to={'#'}>Delete</Link>
+                    <Link onClick={handleClick} to={'#'}>Delete</Link>
                 </div>}
             </article >
 
@@ -114,7 +121,7 @@ export default function Details() {
                     <div className={styles.createComment}>
                         {isAuth && (
                             <form onSubmit={submitHandler}>
-                                <label htmlFor="text">Add Comment</label>
+                                <label htmlFor="text">Добави коментар</label>
                                 <input type="text"
                                     id="comment"
                                     name="comment"
@@ -126,6 +133,16 @@ export default function Details() {
                     </div>
 
                 </article>
+
+                <div className={styles.modal}>
+                    {isModalOpen && (
+                        <Modal
+                            message={`Сигурен ли си, че искаш да изтриеш ${waterfall.name}?`}
+                            onConfirm={wfDeleteHandler}
+                            onCancel={handleCancel}
+                        />
+                    )}
+                </div>
             </div>
         </>
     )
