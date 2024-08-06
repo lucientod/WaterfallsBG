@@ -30,13 +30,16 @@ body,
 input,
 select,
 button,
-section {
+section,
+textarea {
   font: inherit;
 }
 
 body {
   margin: 0 auto;
 }
+
+/* .mainContainer{} */
 
 a {
   padding: 0.2em;

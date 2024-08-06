@@ -14,16 +14,23 @@ export default function Home() {
 
     // console.log(Object.values(waterfalls).slice(-2));
 
+
+
+    //TODO GET LATEST FROM THE SERVER DOESNT WORK
+    /*   {
+        "code": 400,
+        "message": "Cannot read properties of undefined (reading 'localeCompare')"
+         }   
+    */
     // const [latestGames, setLatestGames] = useState([])
 
-    // useEffect(() => {
-    //     (async () => {
-    //         const result = await getLatest()
-
-    //         setLatestGames(result)
-    //     })()
-    //     console.log(latestGames);
-    // }, [])
+        // useEffect(() => {
+        //     (async () => {
+        //         const result = await getLatest()
+        //         setLatestGames(result)
+        //     })()
+        //     console.log(latestGames);
+        // }, [])
 
     return (
         <>
