@@ -118,8 +118,8 @@ export default function Details() {
                         {comments.length === 0 && <p>Все още няма коментари</p>}
                     </article>
 
-                    <div className={styles.createComment}>
-                        {isAuth && (
+                        {isAuth && 
+                    (<div className={styles.createComment}>
                             <form onSubmit={submitHandler}>
                                 <label htmlFor="text">Добави коментар</label>
                                 <input type="text"
@@ -129,8 +129,8 @@ export default function Details() {
                                     onChange={changeHandler}
                                     value={values.comment} />
                                 <input type="submit" value="Изпрати" />
-                            </form>)}
-                    </div>
+                            </form>
+                    </div>)}
 
                 </article>
 
