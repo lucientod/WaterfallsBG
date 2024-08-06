@@ -16,15 +16,20 @@ export default function Details() {
     const createComment = useCreateComment()
     const { isAuth } = useContext(AuthContext)
     const [comments, setComments] = useGetAllComments(WaterfallId)
-    console.log(comments);
+    // console.log(comments);
 
     const {
         changeHandler,
         submitHandler,
         values
-    } = useForm(initialValues, ({ comment }) => {
+    } = useForm(initialValues, async ({ comment }) => {
         console.log(values)
-        createComment(WaterfallId, comment)
+        try {
+           const newComment = await createComment(WaterfallId, comment)
+           setComments(oldComm => [...oldComm, newComment])
+        } catch (err) {
+            throw err
+        }
     })
 
     return (
@@ -77,6 +82,7 @@ export default function Details() {
                                 <input type="text"
                                     id="comment"
                                     name="comment"
+                                    placeholder="eg. This is amazing!"
                                     onChange={changeHandler}
                                     value={values.comment} />
                                 <input type="submit" />
