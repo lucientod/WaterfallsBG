@@ -45,10 +45,14 @@ export default function Home() {
                                 {/* THIS IS OVERFETCHING */}
                                 {Object.values(waterfalls).slice(-3).reverse().map((waterfall) =>
                                     <article className={styles.whCard} key={waterfall._id}>
-                                        <h3>{waterfall.name}</h3>
-                                        <img src={waterfall.imageUrl} />
-                                        <h4>{waterfall.description}</h4>
-                                        <Link to={`/catalogue/${waterfall._id}/details`}>Детайли</Link>
+                                        <div>
+                                            <h3>{waterfall.name}</h3>
+                                            <img src={waterfall.imageUrl} />
+                                            <h4>{waterfall.description}</h4>
+                                        </div>
+                                        <div>
+                                            <Link to={`/catalogue/${waterfall._id}/details`}>Детайли</Link>
+                                        </div>
                                     </article>)}
                             </div>
                         </div>
