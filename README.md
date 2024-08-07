@@ -1,7 +1,7 @@
 # WaterfallsBG
 
 * How to start the application:
-    1. Open new terminal in cd server. Type: node server
+    1. Open new terminal in cd server. Type: node .\server.js
     2. Open new terminal in cd client. Type: npm i
     3. Type: npm run dev
     4. Open in browser Local: 'http://localhost:{the port   vite gives}
