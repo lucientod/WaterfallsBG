@@ -1,5 +1,5 @@
 import './App.css'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import { AuthContextProvider } from './contexts/AuthContext.jsx'
 
 import Nav from './components/nav/Nav.jsx'
@@ -35,8 +35,8 @@ function App() {
                         <Route path="catalogue/:waterfallId/edit" element={<Edit />} />
                         <Route path="logout" element={<Logout />} />
                     </Route>
-
-                   <Route path='modal' element={<Example/>}/>
+                    <Route path='*' element={<Navigate to="/" />} />
+                    {/* <Route path='modal' element={<Example/>}/> */}
                 </Routes>
 
                 <Footer />
