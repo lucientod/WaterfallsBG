@@ -1,13 +1,44 @@
-# WaterfallsBG
+# 🏞️ WaterfallsBG – Explore the Beauty of Bulgarian Waterfalls
 
-* How to start the application:
-    1. Open new terminal in cd server. Type: node .\server.js
-    2. Open new terminal in cd client. Type: npm i
-    3. Type: npm run dev
-    4. Open in browser Local: 'http://localhost:{the port   vite gives}
+A simple React app that showcases some of the most beautiful waterfalls in Bulgaria.  
+Built with love for nature and code 🇧🇬❤️
 
-* The app itself is for users that are interested in waterfalls. Can register/login, create an article with information for a waterfall, edit or delete their own article, see other articles, write commentars so can discuss them. People who are not logged in can only view the home page and the catalogue, see the details with comments, but can't interact with the articles.
+## 🌟 Features
 
+- 🔍 Browse a curated list of waterfalls
+- 🗺️ View detailed info: location, region, access route
+- 💾 Local JSON data – no backend needed
+- 📱 Responsive layout (in progress)
 
-* The application is using React library and Vite, softuni practise server.
+## 🛠️ Built With
 
+- [React](https://reactjs.org/) – frontend framework
+- CSS – simple and clean design
+- Local JSON data (public/waterfalls.json)
+
+## 📦 Installation
+
+Clone the repo and run it locally:
+
+```bash
+git clone https://github.com/lucientod/WaterfallsBG.git
+cd WaterfallsBG
+npm install
+npm start
+```
+Then open http://localhost:3000 in your browser.
+
+💡 Future Ideas
+Integrate interactive map (Leaflet or Google Maps)
+
+Add filtering by region and height
+
+Allow user submissions (suggest a waterfall)
+
+Progressive Web App (PWA) support
+
+👤 Author:
+Made by ❤️ by Lucien Todorov
+
+📝 License
+This project is open-source and available under the MIT License.
